@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.boxSenhas {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: transparent;
+}
+
+.verSenha {
+    margin: 5px;
+}
+
+.verSenha:hover{
+    cursor: pointer;
+}
