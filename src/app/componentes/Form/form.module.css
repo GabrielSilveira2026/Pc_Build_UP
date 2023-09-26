@@ -2,25 +2,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.boxSenhas {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: transparent;
-}
-
-.boxSenhaErro{
-    align-items: center
-}
-
-.verSenhas {
-    font-size: 25px;
-    width: 30px;
-    margin: 5px;
-}
-
-.verSenhas:hover{
-    cursor: pointer;
-    color: #8C61E9
-}

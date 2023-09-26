@@ -73,36 +73,21 @@ function Form() {
                 textoAjuda={errors.email?.message}
             />
 
-            <div className={`
-                ${styles.boxSenhas}
-                ${errors.senha ? styles['boxSenhaErro']: "" }
-            `} 
-            >
-                <Input
-                    {...register('senha')}
-                    label="Senha: "
-                    type={verSenha ? "text" : "password"}
-                    placeholder="***********"
-                    textoAjuda={errors.senha?.message}
-                />
-                    {/* className={`${styles.input} ${erro ? styles['erro'] : ""}`} */}
+            <Input
+                {...register('senha')}
+                label="Senha: "
+                type={verSenha ? "text" : "password"}
+                placeholder="***********"
+                textoAjuda={errors.senha?.message}
+            />
 
-                <FontAwesomeIcon 
-                    className={styles.verSenhas} 
-                    onClick={()=>setVerSenha(!verSenha)} icon={verSenha? faEye : faEyeSlash}
-                />
-            </div>
-
-            <div className={styles.boxSenhas}>
-                <Input
-                    {...register('confirmaSenha')}
-                    label="Confirme a senha"
-                    type={verConfirmaSenha ? "text" : "password"}
-                    placeholder="***********"
-                    textoAjuda={errors.confirmaSenha?.message}
-                />
-                <FontAwesomeIcon className={styles.verSenhas} onClick={()=>setVerConfirmaSenha(!verConfirmaSenha)} icon={verConfirmaSenha? faEye : faEyeSlash}/>
-            </div>
+            <Input
+                {...register('confirmaSenha')}
+                label="Confirme a senha"
+                type={verConfirmaSenha ? "text" : "password"}
+                placeholder="***********"
+                textoAjuda={errors.confirmaSenha?.message}
+            />
 
             <button type="submit">Cadastrar</button>
         </form>

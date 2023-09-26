@@ -5,11 +5,9 @@
     margin-top: 1rem;
 }
 
-.boxInput p {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0;
+.linhaInput{
+    align-items: center;
+    display: flex;
 }
 
 .input {
@@ -19,6 +17,25 @@
     margin-top: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid black;
+    flex-grow: 1;
+}
+
+.verSenhas {
+    font-size: 2rem;
+    width: 30px;
+    margin: 5px;
+}
+
+.verSenhas:hover{
+    cursor: pointer;
+    color: #8C61E9
+}
+
+.textoAjuda {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
 }
 
 .erro {
