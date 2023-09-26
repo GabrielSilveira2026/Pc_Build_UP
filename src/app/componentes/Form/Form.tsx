@@ -1,11 +1,14 @@
 "use client"
 
-import { useForm } from "react-hook-form"
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./form.module.css"
 import { Input } from "../Input/Input";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { useForm } from "react-hook-form"
 import { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
     nomeUsuario: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -70,7 +73,11 @@ function Form() {
                 textoAjuda={errors.email?.message}
             />
 
-            <div className={styles.boxSenhas}>
+            <div className={`
+                ${styles.boxSenhas}
+                ${errors.senha ? styles['boxSenhaErro']: "" }
+            `} 
+            >
                 <Input
                     {...register('senha')}
                     label="Senha: "
@@ -78,15 +85,25 @@ function Form() {
                     placeholder="***********"
                     textoAjuda={errors.senha?.message}
                 />
+                    {/* className={`${styles.input} ${erro ? styles['erro'] : ""}`} */}
+
+                <FontAwesomeIcon 
+                    className={styles.verSenhas} 
+                    onClick={()=>setVerSenha(!verSenha)} icon={verSenha? faEye : faEyeSlash}
+                />
             </div>
 
-            <Input
-                {...register('confirmaSenha')}
-                label="Confirme a senha"
-                type="password"
-                placeholder="***********"
-                textoAjuda={errors.confirmaSenha?.message}
-            />
+            <div className={styles.boxSenhas}>
+                <Input
+                    {...register('confirmaSenha')}
+                    label="Confirme a senha"
+                    type={verConfirmaSenha ? "text" : "password"}
+                    placeholder="***********"
+                    textoAjuda={errors.confirmaSenha?.message}
+                />
+                <FontAwesomeIcon className={styles.verSenhas} onClick={()=>setVerConfirmaSenha(!verConfirmaSenha)} icon={verConfirmaSenha? faEye : faEyeSlash}/>
+            </div>
+
             <button type="submit">Cadastrar</button>
         </form>
     )

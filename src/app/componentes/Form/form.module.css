@@ -10,10 +10,17 @@
     background-color: transparent;
 }
 
-.verSenha {
+.boxSenhaErro{
+    align-items: center
+}
+
+.verSenhas {
+    font-size: 25px;
+    width: 30px;
     margin: 5px;
 }
 
-.verSenha:hover{
+.verSenhas:hover{
     cursor: pointer;
+    color: #8C61E9
 }
