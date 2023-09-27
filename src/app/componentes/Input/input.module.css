@@ -1,34 +1,44 @@
 .boxInput {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
 }
 
 .linhaInput{
-    align-items: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid black;
 }
 
 .input {
+    max-width: 100%;
+    font-size: 1rem;
     color: black;
     padding: .5rem;
     background-color: white;
-    margin-top: 0.5rem;
     border-radius: 0.5rem;
-    border: 1px solid black;
+    border:none;
     flex-grow: 1;
 }
 
+.input:focus{
+    outline:none
+}
+
 .verSenhas {
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 30px;
     margin: 5px;
+    color: var(--background-color-low);
 }
 
 .verSenhas:hover{
     cursor: pointer;
-    color: #8C61E9
+    color: var(--background-color-high);
 }
 
 .textoAjuda {

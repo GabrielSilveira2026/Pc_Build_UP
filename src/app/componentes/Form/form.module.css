@@ -2,3 +2,16 @@
     display: flex;
     flex-direction: column;
 }
+
+.form button{
+    background-color: var(--button-color-bg);
+    padding: 10px;
+    margin: 15px 0 15px 0;
+    border:none;
+    border-radius: 8px
+}
+
+.form button:hover{
+    cursor: pointer;
+    background-color: var(--button-color-hover);
+}

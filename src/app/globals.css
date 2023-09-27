@@ -1,6 +1,17 @@
+:root {
+    --background-color-low: #424549;
+    --background-color-high: #36393E;
+
+    --primary-color-high: #8C61E9;
+    --primary-color-low: #834ef67e;
+
+    --button-color-bg: #424549;
+    --button-color-hover:#2a2c2e;
+}
+
 html,
 body{
-    background-color:#424549;
+    background-color:var(--background-color-low);
     color-scheme: dark;
-    /* background: radial-gradient(400px circle, #834EF6, #424549); */
+    background: radial-gradient(350px circle, var(--primary-color-low), #424549);
 }

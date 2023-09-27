@@ -1,7 +1,7 @@
 import React, { forwardRef, InputHTMLAttributes, useId, useState } from 'react';
 import styles from './input.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
     label?: string;
@@ -13,17 +13,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputId = useId();
         const erro = textoAjuda.length > 0
         const [verSenha, setVerSenha] = useState(false)
-
-        console.log("RENDER");
         
         return (
             <div className={styles.boxInput}>
                 <label htmlFor={inputId}>{label}</label>
 
-                <div className={styles.linhaInput}>
+                <div className={`${styles.linhaInput}  ${erro ? styles['erro'] : ""}`}>
                     <input
                         id={inputId}
-                        className={`${styles.input} ${erro ? styles['erro'] : ""}`}
+                        className={styles.input}
                         name={name}
                         type={
                             type === "password" ?
@@ -31,8 +29,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                                     "text" :
                                     "password"
                                 :
-                                "text"
-
+                                type
                         }
                         ref={ref}
                         {...props}

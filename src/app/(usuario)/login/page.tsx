@@ -1,8 +1,16 @@
 import React from 'react'
-
-function login() {
+type dataProps = {
+    nomeUsuario: string
+    email: string
+    senha: string
+    confirmaSenha: string
+}
+function login( params: any) {
+  console.log(JSON.stringify(params.data));
   return (
-    <div>login</div>
+    <div>
+      Login
+    </div>
   )
 }
 

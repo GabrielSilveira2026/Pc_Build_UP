@@ -1,44 +1,32 @@
+.container {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px
+}
+
 .divCadastro {
-    background-color: #36393E;
-    max-width: 350px;
-    margin: 50px auto auto auto;
+    background-color: var(--background-color-high);
+    min-width: 350px;
     padding: 15px;
     border-radius: 20px;
     border: 1px solid black;
-    box-shadow: 0 0 300px #834ef67e
 }
 
-.divCadastro h1{
+.divCadastro h1 {
     text-align: center;
     justify-content: center;
-    margin: 5px 0 5px 0
-}
-
-.divCadastro button{
-    background-color: #424549;
-    padding: 10px;
-    margin: 15px 0 15px 0;
-    border:none;
-    border-radius: 8px
-}
-
-.divCadastro button:hover{
-    cursor: pointer;
-    background-color: #2a2c2e;
+    margin: 5px 0 5px 0;
 }
 
 .link {
-    color:#8C61E9
+    color: var(--primary-color-high)
 }
 
-@media (max-width: 600px){
+@media (max-width: 480px) {
     .divCadastro {
-        background-color: #36393E;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 15 15;
-        border-radius: 20px;
-        border: 1px solid black
+        min-width: 80%;
     }
 }

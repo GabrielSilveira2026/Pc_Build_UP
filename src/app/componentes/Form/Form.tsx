@@ -3,8 +3,7 @@
 import styles from "./form.module.css"
 import { Input } from "../Input/Input";
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { z } from "zod";
@@ -35,13 +34,13 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 function Form() {
+    const router = useRouter();
     const [verSenha, setVerSenha] = useState(false)
     const [verConfirmaSenha, setVerConfirmaSenha] = useState(false)
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors }
     } = useForm<FormProps>({
         mode: 'onBlur',
@@ -50,7 +49,9 @@ function Form() {
     })
 
     const handleForm = (data: FormProps) => {
-        console.log({ data });
+        console.log(data);
+        
+        router.push(`/login/${data}`);
     }
 
     console.log(errors);
