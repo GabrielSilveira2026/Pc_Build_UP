@@ -1,4 +1,4 @@
-import Form from '@/app/componentes/Form/Form'
+import FormCadastro from '@/app/componentes/Forms/FormCadastro'
 import Link from 'next/link'
 import styles from './cadastro.module.css'
 
@@ -7,7 +7,7 @@ function Cadastro() {
         <div className={styles.container}>
             <div className={styles.divCadastro}>
                 <h1>Cadastro</h1>
-                <Form/>
+                <FormCadastro/>
                 <p>
                     Já tem cadastro?
                     <br />

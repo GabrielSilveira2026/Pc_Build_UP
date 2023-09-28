@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px
+}
+
+.divLogin {
+    background-color: var(--background-color-high);
+    width: 350px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.divLogin h1 {
+    text-align: center;
+    justify-content: center;
+    margin: 5px 0 5px 0;
+}
+
+.link {
+    color: var(--primary-color-high)
+}
+
+@media (max-width: 480px) {
+    .divLogin {
+        min-width: 80%;
+    }
+}

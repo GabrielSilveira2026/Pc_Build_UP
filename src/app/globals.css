@@ -9,8 +9,8 @@
     --button-color-hover:#2a2c2e;
 }
 
-html,
-body{
+html{
+    height: 100%;
     background-color:var(--background-color-low);
     color-scheme: dark;
     background: radial-gradient(350px circle, var(--primary-color-low), #424549);
