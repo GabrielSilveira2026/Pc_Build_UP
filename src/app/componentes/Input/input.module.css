@@ -6,8 +6,6 @@
 
 .linhaInput{
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 0.5rem;
     background-color: white;
     border-radius: 0.5rem;
@@ -15,14 +13,13 @@
 }
 
 .input {
-    max-width: 100%;
+    width: 100%;
     font-size: 1rem;
     color: black;
     padding: .5rem;
     background-color: white;
     border-radius: 0.5rem;
     border:none;
-    flex-grow: 1;
 }
 
 .input:focus{

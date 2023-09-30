@@ -1,21 +1,19 @@
-.container {
+.body {
     display: flex;
     padding-top: 50px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 50px
 }
 
-.divLogin {
+.divContainer {
     background-color: var(--background-color-high);
-    width: 350px;
-    padding: 15px;
+    width: 400px;
+    padding: 15px 25px 15px 25px;
     border-radius: 20px;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
-.divLogin h1 {
+.divContainer h1 {
     text-align: center;
     justify-content: center;
     margin: 5px 0 5px 0;
@@ -25,8 +23,8 @@
     color: var(--primary-color-high)
 }
 
-@media (max-width: 480px) {
-    .divLogin {
+@media (max-width: 400px) {
+    .divContainer {
         min-width: 80%;
     }
 }

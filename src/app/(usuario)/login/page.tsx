@@ -1,11 +1,11 @@
 import FormLogin from '@/app/componentes/Forms/FormLogin'
 import Link from 'next/link'
-import styles from './login.module.css'
+import styles from '../CadastroLogin.module.css'
 
 function Login() {
     return (
-        <div className={styles.container}>
-            <div className={styles.divLogin}>
+        <div className={styles.body}>
+            <div className={styles.divContainer}>
                 <h1>Login</h1>
                 <FormLogin/>
                 <p>
