@@ -7,17 +7,17 @@
 .linhaInput{
     display: flex;
     margin-top: 0.5rem;
-    background-color: white;
-    border-radius: 0.5rem;
-    border: 1px solid black;
+    /* background-color: white; */
+    /* border-radius: 0.5rem; */
+    border-bottom: 1px solid white;
 }
 
 .input {
     width: 100%;
     font-size: 1rem;
-    color: black;
+    color: white;
     padding: .5rem;
-    background-color: white;
+    background-color: var(--background-color-high);
     border-radius: 0.5rem;
     border:none;
 }
@@ -30,12 +30,12 @@
     font-size: 1.5rem;
     width: 35px;
     margin: 5px;
-    color: var(--background-color-low);
+    color: white;
 }
 
 .verSenhas:hover{
     cursor: pointer;
-    color: var(--background-color-high);
+    opacity: 0.5;
 }
 
 .textoAjuda {
@@ -46,5 +46,5 @@
 }
 
 .erro {
-    border: 1px solid red
+    border-bottom: 1px solid red;
 }

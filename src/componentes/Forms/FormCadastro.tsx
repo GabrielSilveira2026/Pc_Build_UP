@@ -10,7 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
-    nomeUsuario: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
+    nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
 
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
 
@@ -46,10 +46,9 @@ function Form() {
         resolver: zodResolver(schema)
     })
 
-    const handleForm = (data: FormProps) => {
+    const handleForm = async(data: FormProps) => {
         console.log(data);
-        
-        router.push(`/login/${data}`);
+        // router.push(`/login/${data}`);
     }
 
     console.log(errors);
@@ -57,11 +56,11 @@ function Form() {
     return (
         <form className={styles.form} onSubmit={handleSubmit(handleForm)}>
             <Input
-                {...register('nomeUsuario')}
+                {...register('nome')}
                 label="Nome de Usuário"
                 type="text"
                 placeholder="Nome de Usuário"
-                textoAjuda={errors.nomeUsuario?.message}
+                textoAjuda={errors.nome?.message}
             />
 
             <Input

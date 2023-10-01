@@ -12,7 +12,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ type = "", label = "", textoAjuda = "", name = "", ...props }, ref) => {
         const inputId = useId();
         const erro = textoAjuda.length > 0
-        const [verSenha, setVerSenha] = useState(false)
+        const [verSenha, setVerSenha] = useState<Boolean>(false)
         
         return (
             <div className={styles.boxInput}>

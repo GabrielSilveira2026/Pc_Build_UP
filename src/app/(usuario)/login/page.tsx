@@ -1,4 +1,4 @@
-import FormLogin from '@/app/componentes/Forms/FormLogin'
+import FormLogin from '@/componentes/Forms/FormLogin'
 import Link from 'next/link'
 import styles from '../CadastroLogin.module.css'
 
