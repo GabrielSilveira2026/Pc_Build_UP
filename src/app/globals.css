@@ -14,13 +14,12 @@
 }
 
 html{
-    height: 100vh;
+    height: 100%;
     background-color:var(--background-color-low);
     color-scheme: dark;
     background: radial-gradient(350px circle, var(--primary-color-low), #424549);
 }
 
 body{
-    height: 100%;
-    margin: 0;
+    margin:0
 }
