@@ -4,8 +4,8 @@ import styles from '../CadastroLogin.module.css'
 
 function Cadastro() {
     return (
-        <div className={styles.body}>
-            <div className={styles.divContainer}>
+        <div className={styles.container}>
+            <div className={styles.contentBox}>
                 <h1>Cadastro</h1>
                 <FormCadastro/>
                 <p>

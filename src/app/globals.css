@@ -19,3 +19,8 @@ html{
     color-scheme: dark;
     background: radial-gradient(350px circle, var(--primary-color-low), #424549);
 }
+
+body{
+    height: 100%;
+    margin: 0;
+}
