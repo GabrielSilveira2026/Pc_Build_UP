@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -48,7 +49,21 @@ function Form() {
 
     const handleForm = async(data: FormProps) => {
         console.log(data);
-        // router.push(`/login/${data}`);
+
+        const user: object = {
+            nome: data.nome,
+            email: data.email,
+            senha: data.senha
+        }
+        console.log(user);
+        
+        // const resposta = await axios.post("http://164.152.38.61/usuario/cadastro", {usuario:user})
+        
+        // console.log(resposta.data);
+        
+        // if (resposta.status === 201) {
+            
+        // }
     }
 
     console.log(errors);

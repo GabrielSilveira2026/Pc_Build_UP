@@ -13,10 +13,10 @@ const schema = z.object({
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
 
     senha: z.string().nonempty("Insira uma senha")
-        .min(6, 'Insira uma senha com no mínimo 6 caracteres')
-        .regex(/[A-Z]/, { message: 'A senha deve conter pelo menos uma letra maiúscula.' })
-        .regex(/[0-9]/, { message: 'A senha deve conter pelo menos um número.' })
-        .regex(/[@$!%*?&]/, { message: 'A senha deve conter pelo menos um caractere especial.' }),
+        // .min(6, 'Insira uma senha com no mínimo 6 caracteres')
+        // .regex(/[A-Z]/, { message: 'A senha deve conter pelo menos uma letra maiúscula.' })
+        // .regex(/[0-9]/, { message: 'A senha deve conter pelo menos um número.' })
+        // .regex(/[@$!%*?&]/, { message: 'A senha deve conter pelo menos um caractere especial.' }),
 })
 
 type FormProps = z.infer<typeof schema>
