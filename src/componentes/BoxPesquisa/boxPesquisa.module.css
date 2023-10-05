@@ -1,7 +1,7 @@
 .searchContent{
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 90%;
     padding: 15px;
     justify-content: center;
 }
@@ -13,4 +13,11 @@
     padding: 15px;
     border-radius: 8px;
     gap: 5px;
+}
+
+
+@media (max-width: 480px) {
+    .searchContent {
+        min-width: 90%;
+    }
 }
