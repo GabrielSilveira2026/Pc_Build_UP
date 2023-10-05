@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, ButtonHTMLAttributes } from 'react'
 import styles from './button.module.css'
 
-type ButtonProps = {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &{
     text: string,
     type?: "button" | "submit" | "reset",
 }
