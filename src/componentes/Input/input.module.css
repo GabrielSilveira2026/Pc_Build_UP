@@ -8,7 +8,6 @@
 .inputLine {
     display: flex;
     align-items: center;
-    /* margin-top: 0.5rem; */
     background-color: white;
     border-radius: 8px;
     border-bottom: 1px solid white;
@@ -19,7 +18,7 @@
     width: 100%;
     font-size: 1rem;
     color: white;
-    padding: .5rem;
+    padding: .6rem;
     background-color: transparent;
     border: none;
 }
