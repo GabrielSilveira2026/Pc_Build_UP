@@ -5,7 +5,7 @@ import styles from './boxPesquisa.module.css'
 
 export const BoxPesquisa = () => {
     return (
-        <div>
+        <div className={styles.searchContent}>
             <form onSubmit={() => { }} className={styles.searchArea}>
                 <Input placeholder="Procurar" />
                 <Button text="Pesquisar" />

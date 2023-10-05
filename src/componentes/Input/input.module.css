@@ -1,13 +1,13 @@
 .boxInput {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    width: 100%;
 }
 
 .inputLine {
     display: flex;
     align-items: center;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     background-color: white;
     border-radius: 8px;
     border-bottom: 1px solid white;

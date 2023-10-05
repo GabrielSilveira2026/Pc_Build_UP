@@ -1,0 +1,14 @@
+.searchContent{
+    padding: 15px;
+    justify-content: center;
+}
+
+.searchArea{
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color-low);
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    /* align-items: flex-end; */
+}
