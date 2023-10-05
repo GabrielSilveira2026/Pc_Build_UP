@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -57,13 +57,13 @@ function Form() {
         }
         console.log(user);
         
-        // const resposta = await axios.post("http://164.152.38.61/usuario/cadastro", {usuario:user})
+        const resposta: AxiosResponse = await axios.post("http://164.152.38.61/usuario/cadastro", {usuario:user})
         
-        // console.log(resposta.data);
+        console.log(resposta.status, resposta.data);
         
-        // if (resposta.status === 201) {
+        if (resposta.status === 201) {
             
-        // }
+        }
     }
 
     console.log(errors);

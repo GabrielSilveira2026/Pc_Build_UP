@@ -1,6 +1,6 @@
 import FormCadastro from '@/componentes/Forms/FormCadastro'
 import Link from 'next/link'
-import styles from '../CadastroLogin.module.css'
+import styles from '../cadastroLogin.module.css'
 
 function Cadastro() {
     return (

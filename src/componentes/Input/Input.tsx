@@ -16,9 +16,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         
         return (
             <div className={styles.boxInput}>
-                <label htmlFor={inputId}>{label}:</label>
+                {label && <label htmlFor={inputId}>{label}:</label>}
 
-                <div className={`${styles.linhaInput}  ${erro ? styles['erro'] : ""}`}>
+                <div className={`${styles.inputLine}  ${erro ? styles['erro'] : ""}`}>
                     <input
                         id={inputId}
                         className={styles.input}
