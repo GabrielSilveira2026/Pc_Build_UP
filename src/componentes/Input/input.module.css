@@ -1,6 +1,7 @@
 .boxInput {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
     width: 100%;
 }
 
@@ -35,7 +36,6 @@
 .verSenhas {
     font-size: 1.2rem;
     width: 35px;
-    height: 35px;
     margin: 5px;
     color: white;
 }
