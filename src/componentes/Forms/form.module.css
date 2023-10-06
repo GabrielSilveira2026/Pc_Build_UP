@@ -7,7 +7,7 @@
 
 .form button{
     font-size: 1rem;
-    background-color: var(--button-color-bg);
+    background-color: var(--gray-medium);
     padding: 10px;
     margin: 15px 0 15px 0;
     border:none;
@@ -16,5 +16,5 @@
 
 .form button:hover{
     cursor: pointer;
-    background-color: var(--button-color-hover);
+    background-color: var(--gray-high);
 }

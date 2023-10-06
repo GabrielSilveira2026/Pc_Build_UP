@@ -1,12 +1,11 @@
 :root {
-    --background-color-low: #424549;
-    --background-color-high: #36393E;
+    --color-high: #381b1b;
+    --color-medium: #5e2a2a;
+    --color-low: #7d4e4e;
 
-    --primary-color-high: #8C61E9;
-    --primary-color-low: #834ef67e;
-
-    --button-color-bg: #424549;
-    --button-color-hover:#2a2c2e;
+    --gray-high:#2a2c2e;
+    --gray-medium: #36383b;
+    --gray-low: #424549;
 }
 
 * {
@@ -15,9 +14,13 @@
 
 html{
     height: 100%;
-    background-color:var(--background-color-low);
+    background-color:var(--color-high);
     color-scheme: dark;
-    background: radial-gradient(350px circle, var(--primary-color-low), #424549);
+    background: 
+        radial-gradient(circle at 10% 40%, var(--color-medium), transparent 30%),
+        radial-gradient(circle at 90% 60%, var(--color-medium), transparent 30%),
+        var(--color-high);   
+    /* background-repeat: space; */
 }
 
 body{

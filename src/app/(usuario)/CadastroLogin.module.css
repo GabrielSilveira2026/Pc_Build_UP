@@ -6,7 +6,7 @@
 }
 
 .contentBox {
-    background-color: var(--background-color-high);
+    background-color: gray;
     width: 400px;
     padding: 15px 25px 15px 25px;
     border-radius: 20px;
@@ -20,11 +20,11 @@
 }
 
 .link {
-    color: var(--primary-color-high)
+    color: #cd5c5c
 }
-
+/* 
 @media (max-width: 400px) {
     .contentBox {
         min-width: 80%;
     }
-}
+} */

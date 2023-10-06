@@ -11,7 +11,7 @@
     background-color: white;
     border-radius: 8px;
     border-bottom: 1px solid white;
-    background-color: var(--background-color-low);
+    background-color: var(--gray-medium);
 }
 
 .input {
