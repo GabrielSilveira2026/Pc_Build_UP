@@ -1,6 +1,6 @@
 .button{
     font-size: 1rem;
-    background-color: var(--button-color-bg);
+    background-color: var(--gray-medium);
     padding: 10px;
     border:none;
     border-radius: 8px;
@@ -9,5 +9,5 @@
 
 .button:hover{
     cursor: pointer;
-    background-color: var(--button-color-hover);
+    background-color: var(--gray-high);
 }

@@ -10,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosResponse } from "axios";
 import Router from "next/router";
+import { Button } from "../Button/Button";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -103,7 +104,8 @@ function Form() {
                 textoAjuda={errors.confirmaSenha?.message}
             />
 
-            <button type="submit">Cadastrar</button>
+            <Button type="submit" text="Cadastrar"/>
+
         </form>
     )
 }

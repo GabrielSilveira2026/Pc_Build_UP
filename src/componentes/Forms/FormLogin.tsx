@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../Button/Button";
 
 const schema = z.object({
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
@@ -58,8 +59,7 @@ function Form() {
                 placeholder="***********"
                 textoAjuda={errors.senha?.message}
             />
-
-            <button type="submit">Login</button>
+            <Button type="submit" text="Login"/>
         </form>
     )
 }
