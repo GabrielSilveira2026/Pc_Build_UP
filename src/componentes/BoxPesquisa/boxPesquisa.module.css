@@ -9,7 +9,7 @@
 .searchArea{
     display: flex;
     align-items: center;
-    background-color: var(--primary-color-low);
+    /* background-color: var(--color-medium); */
     padding: 15px;
     border-radius: 8px;
     gap: 5px;

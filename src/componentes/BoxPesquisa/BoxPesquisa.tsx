@@ -1,5 +1,7 @@
 "use client"
-import axios, { AxiosResponse } from 'axios'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
@@ -78,7 +80,15 @@ export const BoxPesquisa = () => {
                 }}
             >
                 <Input onChange={(event) => setApp(event.target.value)} placeholder="Procurar" />
-                <Button onClick={() => { app && pesquisa(app) }} text="Pesquisar" />
+                <Button 
+                    style={{backgroundColor: 'transparent', borderBottom: '1px solid white'}}
+                    onClick={() => { app && pesquisa(app) }} 
+                    text={
+                        <FontAwesomeIcon
+                            icon={faSearch}
+                        />
+                    }
+                />
             </form>
         </div>
     )

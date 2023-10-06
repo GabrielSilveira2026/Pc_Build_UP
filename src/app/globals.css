@@ -1,6 +1,6 @@
 :root {
-    --color-high: #381b1b;
-    --color-medium: #5e2a2a;
+    --color-high: #120C13;
+    --color-medium: #2A1B2C;
     --color-low: #7d4e4e;
 
     --gray-high:#2a2c2e;
@@ -13,16 +13,15 @@
 }
 
 html{
-    height: 100%;
+    min-height: 100vh; 
     background-color:var(--color-high);
     color-scheme: dark;
-    background: 
+    background:
         radial-gradient(circle at 10% 40%, var(--color-medium), transparent 30%),
         radial-gradient(circle at 90% 60%, var(--color-medium), transparent 30%),
         var(--color-high);   
-    /* background-repeat: space; */
 }
 
 body{
-    margin:0
+    margin:0;
 }
