@@ -4,7 +4,13 @@
     background-color: transparent;
     padding: 10px;
     border-bottom: 1px solid ;
+    border-top: 1px solid ;
     border-radius: 6px;
+}
+
+.button:active{
+    transform: scale(0.98, 0.98);
+    /* background-color: red; */
 }
 
 .button:hover{
@@ -12,7 +18,12 @@
     background: 
         linear-gradient(
             to top, 
-            rgb(255, 255, 255, 0.3),
-            transparent 100%
+            rgb(255, 255, 255, 0.1),
+            transparent 50%
+        ),
+        linear-gradient(
+            to bottom, 
+            rgb(255, 255, 255, 0.1),
+            transparent 50%
         )
 }

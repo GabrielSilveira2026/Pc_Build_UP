@@ -16,7 +16,8 @@
 }
 
 html{
-    min-height: 100vh; 
+    min-height: 100%;
+
     background-color:var(--color-high);
     color-scheme: dark;
     background:

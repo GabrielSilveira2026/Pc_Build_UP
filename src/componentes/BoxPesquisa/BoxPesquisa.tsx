@@ -25,7 +25,7 @@ interface Response {
 export const BoxPesquisa = () => {
     const [app, setApp] = useState<string>("")
     const [listaApps, setListaApps] = useState<AppProps[]>([])
-
+    const [loading, setLoading] = useState<boolean>(false)
     //Nota: Mover essa função para um arquivo "httpservices"
     async function pesquisaApps(app: string, offset: number) {
         const response = await fetch(`https://g4673849dbf8477-kh8pftimtcmp3b10.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/pesquisa/resultados/${app}?limit=10000&offset=${offset}`);
@@ -36,6 +36,7 @@ export const BoxPesquisa = () => {
     }
 
     async function pesquisa(app: string) {
+        setLoading(true)
         let offset: number = 0
         let response: Response
         let listaAuxiliar: AppProps[] = []//!
@@ -53,9 +54,11 @@ export const BoxPesquisa = () => {
             offset += 10000
         } while (response.hasMore === true);
 
-        setListaApps(listaAuxiliar)
 
-        if (listaAuxiliar.length === 0) {
+        setLoading(false)
+        if (listaAuxiliar.length !== 0) {
+            setListaApps(listaAuxiliar)
+        }else{
             // setListaJogos(listaInicial)
             alert("Nenhum jogo encontrado")
         }
@@ -74,14 +77,15 @@ export const BoxPesquisa = () => {
                 <FontAwesomeIcon
                     className={styles.btnSearch}
                     onClick={() => { app && pesquisa(app) }}
-                    icon = { faSearch }
+                    icon={faSearch}
                 />
             </form>
+            {loading && <>Carregando</>}
             <div className={styles.ResultArea}>
                 {
-                    listaApps.map((app) => { 
-                        return(
-                            <CardApp key={app.id} app={app}/>
+                    listaApps.map((app) => {
+                        return (
+                            <CardApp key={app.id} app={app} />
                         )
                     })
                 }

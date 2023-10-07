@@ -1,8 +1,30 @@
 .cardContainer{
-        margin-top: 15px;
-        width: 450px;
-        display: flex;
+        flex: 1;
         flex-direction: column;
+        min-width: 200px;
+        max-width: 400px;
+        display: flex;
         padding: 10px;
-        background-color: #120815;
+        background: var(--color-medium);
+        border-radius: 8px;
+        gap: 6px
+}
+
+.cardContainer:hover{
+        transform: scale(1.05, 1.05);
+        cursor: pointer;
+}
+
+.image{
+        border-radius: 8px;
+}
+
+.btnSelect{
+        bottom: 0;
+}
+
+@media (max-width:480px) {
+        .cardContainer{
+                min-width: 150px;
+        }
 }
