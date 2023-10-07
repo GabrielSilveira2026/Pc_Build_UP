@@ -17,7 +17,7 @@ export function montaPc(requisitos: any){
   return axios.post(`${enderecoBackend}/montaPc`, {requisitos:requisitos})
 }
 
-type usuarioProps = {
+interface usuarioProps {
     nome: string;
     email: string;
     senha: string;

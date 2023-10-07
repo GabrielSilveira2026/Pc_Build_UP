@@ -22,7 +22,7 @@ const schema = z.object({
 
 type FormProps = z.infer<typeof schema>
 
-function Form() {
+const FormLogin = () => {
     const router = useRouter();
 
     const {
@@ -64,4 +64,4 @@ function Form() {
     )
 }
 
-export default Form
+export default FormLogin

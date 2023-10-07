@@ -7,20 +7,10 @@ import { useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import styles from './boxPesquisa.module.css'
+import { CardApp } from '../CardApp/CardApp';
+import { AppProps } from '../types';
 
-type AppProps = {
-    estado: string,
-    id: number,
-    id_jogo_steam: number,
-    imagem: string,
-    nome: string,
-    preco: string,
-    requisitosminimos: string,
-    requisitosrecomendados: string,
-
-}
-
-type Response = {
+interface Response {
     items: AppProps[],
     hasMore: boolean,
     limit: number,
@@ -91,10 +81,7 @@ export const BoxPesquisa = () => {
                 {
                     listaApps.map((app) => { 
                         return(
-                            <div className={styles.card}>
-                                <img src={app.imagem}/>
-                                {app.nome}
-                            </div>
+                            <CardApp key={app.id} app={app}/>
                         )
                     })
                 }
