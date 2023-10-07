@@ -15,6 +15,36 @@
     gap: 5px;
 }
 
+.btnSearch{
+    font-size: 1.2rem;
+    background-color: transparent;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-radius: 6px;
+}
+
+.btnSearch:hover{
+    cursor: pointer;
+    background: 
+        linear-gradient(
+            to top, 
+            rgb(255, 255, 255, 0.5),
+            transparent 80%
+        )
+}
+
+.ResultArea{
+    /* background-color: red; */
+}
+
+.card{
+    margin-top: 15px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #120815;
+}
 
 @media (max-width: 480px) {
     .searchContent {

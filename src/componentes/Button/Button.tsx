@@ -2,7 +2,7 @@ import React, { forwardRef, ButtonHTMLAttributes } from 'react'
 import styles from './button.module.css'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &{
-    text: any,
+    text: string,
     type?: "button" | "submit" | "reset",
 }
 

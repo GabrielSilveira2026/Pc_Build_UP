@@ -26,7 +26,7 @@ type Response = {
     offset: number,
     count: number,
     links: {
-        rel: string, 
+        rel: string,
         href: string
     }[]
 }
@@ -51,7 +51,7 @@ export const BoxPesquisa = () => {
         do {
             response = await pesquisaApps(app, offset)
             console.log(response);
-            
+
             for (var i = 0; i < response.count; i++) {
                 let app: AppProps = response?.items[i]
                 // let jogoEstaSelecionado = selecionados.cart.find(jogo => jogo.id_jogo_steam === dadosJogo.id_jogo_steam)
@@ -80,16 +80,24 @@ export const BoxPesquisa = () => {
                 }}
             >
                 <Input onChange={(event) => setApp(event.target.value)} placeholder="Procurar" />
-                <Button 
-                    style={{backgroundColor: 'transparent', borderBottom: '1px solid white'}}
-                    onClick={() => { app && pesquisa(app) }} 
-                    text={
-                        <FontAwesomeIcon
-                            icon={faSearch}
-                        />
-                    }
+                <FontAwesomeIcon
+                    className={styles.btnSearch}
+                    onClick={() => { app && pesquisa(app) }}
+                    icon = { faSearch }
                 />
             </form>
+            <div className={styles.ResultArea}>
+                {
+                    listaApps.map((app) => { 
+                        return(
+                            <div className={styles.card}>
+                                <img src={app.imagem}/>
+                                {app.nome}
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
