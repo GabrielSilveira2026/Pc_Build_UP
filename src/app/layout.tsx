@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Pc Build Up',
-  description: 'Monte o PC IDEAL para as suas Necessidades',
+  description: 'Monte o computador IDEAL para as suas Necessidades',
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <header style={{
           // backgroundColor: "var(--color-medium)",
-          background: "linear-gradient(90deg ,#2a22ba, #723b7c)",
+          background: "linear-gradient(90deg ,var(--blue-medium), var(--color-low-light))",
           height: 50,
           display: "flex",
           justifyContent: "space-around",

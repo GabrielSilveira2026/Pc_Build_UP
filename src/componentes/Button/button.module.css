@@ -1,13 +1,18 @@
 .button{
+    border:none; 
     font-size: 1rem;
-    background-color: var(--gray-medium);
+    background-color: transparent;
     padding: 10px;
-    border:none;
-    border-radius: 8px;
-    height: min-content;
+    border-bottom: 1px solid ;
+    border-radius: 6px;
 }
 
 .button:hover{
     cursor: pointer;
-    background-color: var(--gray-high);
+    background: 
+        linear-gradient(
+            to top, 
+            rgb(255, 255, 255, 0.3),
+            transparent 100%
+        )
 }

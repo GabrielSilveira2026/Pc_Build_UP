@@ -1,7 +1,10 @@
 :root {
     --color-high: #120C13;
     --color-medium: #2A1B2C;
-    --color-low: #7d4e4e;
+    --color-low: #44054b;
+    --color-low-light:#723b7c;
+
+    --blue-medium: #2a22ba;
 
     --gray-high:#2a2c2e;
     --gray-medium: #36383b;
