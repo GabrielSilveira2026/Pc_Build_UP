@@ -2,6 +2,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
