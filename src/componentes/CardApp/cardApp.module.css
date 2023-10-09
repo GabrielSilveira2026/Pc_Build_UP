@@ -1,17 +1,15 @@
 .cardContainer{
-        flex: 1;
-        flex-direction: column;
-        min-width: 200px;
-        max-width: 400px;
         display: flex;
+        flex-direction: column;
+        width: 100%;
         padding: 10px;
         background: var(--color-medium);
         border-radius: 8px;
-        gap: 6px
+        gap: 6px;
 }
 
 .cardContainer:hover{
-        transform: scale(1.05, 1.05);
+        transform: scale(1.025, 1.025);
         cursor: pointer;
 }
 
@@ -20,11 +18,5 @@
 }
 
 .btnSelect{
-        bottom: 0;
-}
-
-@media (max-width:480px) {
-        .cardContainer{
-                min-width: 150px;
-        }
+        margin-top: auto;
 }

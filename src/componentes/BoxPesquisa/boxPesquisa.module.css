@@ -1,15 +1,12 @@
 .searchContent {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     width: 90%;
-    padding: 15px;
     justify-content: center;
 }
 
 .searchArea {
     display: flex;
     align-items: center;
-    /* background-color: var(--color-medium); */
     padding: 15px;
     border-radius: 8px;
     gap: 5px;
@@ -24,10 +21,6 @@
     border-radius: 6px;
 }
 
-.btnSearch:active{
-    transform: scale(0.98, 0.98);
-}
-
 .btnSearch:hover {
     cursor: pointer;
     background:
@@ -36,15 +29,20 @@
             transparent 80%)
 }
 
-.ResultArea {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    gap:10px
+.btnSearch:active {
+    transform: scale(0.98, 0.98);
 }
-/* 
-@media (max-width: 480px) {
-    .searchContent {
-        min-width: 90%;
+
+.ResultArea {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+
+@media (max-width: 600px) {
+
+    .ResultArea {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
-} */
+}
