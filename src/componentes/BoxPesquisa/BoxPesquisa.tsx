@@ -42,7 +42,6 @@ export const BoxPesquisa = () => {
         let listaAuxiliar: AppProps[] = []//!
         do {
             response = await pesquisaApps(app, offset)
-            console.log(response);
 
             for (var i = 0; i < response.count; i++) {
                 let app: AppProps = response?.items[i]

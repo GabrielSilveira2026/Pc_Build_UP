@@ -11,13 +11,8 @@ interface CardProps {
 }
 
 export const CardApp = ({ app }: CardProps) => {
-
-    console.log(styles.btnSelect);
-    
-
     function capture() {
         app.estado = "check-circle"
-        console.log(app.estado);
     }
 
     return (
