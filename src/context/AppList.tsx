@@ -1,7 +1,7 @@
 import { AppProps } from '@/componentes/types'
 import React, { createContext, useContext, useState } from 'react'
 
-export const AppContext = createContext({})
+export const AppContext = createContext<any>({})
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
@@ -20,10 +20,13 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setAppList(newAppList)
     }
     return (
-        <AppContext.Provider value={{ appList, addToAppList, removeToAppList }}>
+        <AppContext.Provider value={{ appList , addToAppList, removeToAppList }}>
             {children}
         </AppContext.Provider>
     )
 }
 
-export const useAppListContext = () => useContext(AppContext)
+export const useAppListContext = () =>{
+    const cart = useContext(AppContext)
+    return cart
+}
