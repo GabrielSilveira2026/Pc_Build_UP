@@ -9,6 +9,7 @@ import { Input } from '../Input/Input'
 import styles from './boxPesquisa.module.css'
 import { CardApp } from '../CardApp/CardApp';
 import { AppProps } from '../types';
+import { useAppListContext } from '@/context/AppList';
 
 interface Response {
     items: AppProps[],
@@ -23,6 +24,7 @@ interface Response {
 }
 
 export const BoxPesquisa = () => {
+    const appList = useAppListContext()
     const [app, setApp] = useState<string>("")
     const [listaApps, setListaApps] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
@@ -45,9 +47,8 @@ export const BoxPesquisa = () => {
 
             for (var i = 0; i < response.count; i++) {
                 let app: AppProps = response?.items[i]
-                // let jogoEstaSelecionado = selecionados.cart.find(jogo => jogo.id_jogo_steam === dadosJogo.id_jogo_steam)
-                // app.estado = jogoEstaSelecionado ? 'check-circle' : 'circle'
-                app.estado = "circle"
+                let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
+                app.estado = jogoEstaSelecionado ?  'check-circle' : 'circle' 
                 listaAuxiliar.push(app)
             }
             offset += 10000
@@ -65,6 +66,9 @@ export const BoxPesquisa = () => {
 
     return (
         <div className={styles.searchContent}>
+            <div className={styles.appListIcon}>
+                {appList.appList.length}
+            </div>
             <form
                 className={styles.searchArea}
                 onSubmit={(event) => {
