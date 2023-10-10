@@ -39,24 +39,52 @@
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
-.appListIcon{
+.appListIcon {
+    cursor: pointer;
     background-color: white;
-    color:black;
+    color: black;
     align-items: center;
     display: flex;
     justify-content: center;
     width: 50px;
     height: 50px;
-    border-radius:50px;
+    border-radius: 50px;
     position: fixed;
     right: 25px;
     bottom: 25px;
     z-index: 1;
 }
 
+
+.appListList{
+    list-style: none;
+    visibility: hidden;
+    background-color: white;
+    color: black;
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius:20px;
+    position: fixed;
+    right: 25px;
+    bottom: 9px;
+    gap: 8px;
+}
+
+.viewList{
+    visibility: visible;
+}
+
 @media (max-width: 600px) {
 
     .ResultArea {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .appListList{
+        width: 150px;
     }
 }

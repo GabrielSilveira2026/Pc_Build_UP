@@ -28,6 +28,8 @@ export const BoxPesquisa = () => {
     const [app, setApp] = useState<string>("")
     const [listaApps, setListaApps] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
+    const [viewAppList, setViewAppList] = useState<boolean>(false)
+
     //Nota: Mover essa função para um arquivo "httpservices"
     async function pesquisaApps(app: string, offset: number) {
         const response = await fetch(`https://g4673849dbf8477-kh8pftimtcmp3b10.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/pesquisa/resultados/${app}?limit=10000&offset=${offset}`);
@@ -48,7 +50,7 @@ export const BoxPesquisa = () => {
             for (var i = 0; i < response.count; i++) {
                 let app: AppProps = response?.items[i]
                 let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
-                app.estado = jogoEstaSelecionado ?  'check-circle' : 'circle' 
+                app.estado = jogoEstaSelecionado ? 'check-circle' : 'circle'
                 listaAuxiliar.push(app)
             }
             offset += 10000
@@ -58,7 +60,7 @@ export const BoxPesquisa = () => {
         setLoading(false)
         if (listaAuxiliar.length !== 0) {
             setListaApps(listaAuxiliar)
-        }else{
+        } else {
             // setListaJogos(listaInicial)
             alert("Nenhum jogo encontrado")
         }
@@ -66,9 +68,6 @@ export const BoxPesquisa = () => {
 
     return (
         <div className={styles.searchContent}>
-            <div className={styles.appListIcon}>
-                {appList.appList.length}
-            </div>
             <form
                 className={styles.searchArea}
                 onSubmit={(event) => {
@@ -93,6 +92,18 @@ export const BoxPesquisa = () => {
                     })
                 }
             </div>
+            <div
+                className={styles.appListIcon}
+                id="cart-icon"
+                onClick={()=>{setViewAppList(!viewAppList)}}>
+                <div>
+                    {appList.appList.length ? appList.appList.length : 0}
+                </div>
+                <ul className={`${styles.appListList} ${viewAppList ? styles['viewList']: ""}`}>
+                    {appList.appList.map((app: AppProps) => { return <li>{app.nome}</li> })}
+                </ul>
+            </div>
+
         </div>
     )
 }
