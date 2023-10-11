@@ -1,4 +1,4 @@
-.cardContainer{
+.cardContainer {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -7,15 +7,40 @@
         border-radius: 8px;
 }
 
-.cardContainer:hover{
+.cardContainer:hover {
         transform: scale(1.025, 1.025);
         cursor: pointer;
 }
 
-.image{
+.image {
         border-radius: 8px;
 }
 
-.btnSelect{
+.boxButtons {
         margin-top: auto;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        gap: 5px
+}
+
+.boxButtons button, .boxButtons a{
+        text-decoration: none;
+        text-align: center;
+        font-size: 1rem;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
+        border: none;
+        padding: 5px;
+        background-color: var(--color-low);
+}
+
+.btnSteam {
+        flex-grow: 1;
+}
+
+.btnSelect {
+        flex-grow: 1;
 }

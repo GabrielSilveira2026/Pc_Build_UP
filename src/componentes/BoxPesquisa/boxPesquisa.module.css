@@ -64,11 +64,11 @@
     color: white;
     width: 200px;
     height: fit-content;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    border-radius:20px;
+    border-radius: 8px;
     position: fixed;
     right: 25px;
     bottom: 65px;
@@ -86,6 +86,6 @@
     }
 
     .appListList{
-        width: 150px;
+        min-width: 150px;
     }
 }
