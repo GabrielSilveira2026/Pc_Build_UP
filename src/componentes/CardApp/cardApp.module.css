@@ -5,7 +5,6 @@
         padding: 10px;
         background: var(--color-medium);
         border-radius: 8px;
-        gap: 6px;
 }
 
 .cardContainer:hover{

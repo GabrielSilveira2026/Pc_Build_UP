@@ -57,20 +57,21 @@
 
 
 .appListList{
+    font-size: 12px;
     list-style: none;
     visibility: hidden;
     background-color: white;
-    color: black;
+    color: white;
     width: 200px;
+    height: fit-content;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
     border-radius:20px;
     position: fixed;
     right: 25px;
-    bottom: 9px;
+    bottom: 65px;
     gap: 8px;
 }
 

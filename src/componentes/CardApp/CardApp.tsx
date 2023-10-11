@@ -33,7 +33,7 @@ export const CardApp = ({ app }: CardProps) => {
         <div className={styles.cardContainer}>
             <img className={styles.image} src={app.imagem} />
             <p>{app.nome}</p>
-            <Button style={styles.btnSelect} onClick={() => mudaEstado()} text={app.estado === "check-circle"? "Selecionado" : "Adicionar"}/>
+            <Button style={styles.btnSelect} onClick={() => mudaEstado()} text={app.estado === "check-circle"? "x" : "+"}/>
         </div>
     )
 }

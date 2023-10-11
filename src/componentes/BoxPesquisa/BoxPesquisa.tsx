@@ -95,12 +95,18 @@ export const BoxPesquisa = () => {
             <div
                 className={styles.appListIcon}
                 id="cart-icon"
-                onClick={()=>{setViewAppList(!viewAppList)}}>
-                <div>
-                    {appList.appList.length ? appList.appList.length : 0}
+            >
+                <div
+                    onClick={() => {setViewAppList(!viewAppList)}}>
+                    {viewAppList ? "X" : appList.appList.length || 0}
                 </div>
-                <ul className={`${styles.appListList} ${viewAppList ? styles['viewList']: ""}`}>
-                    {appList.appList.map((app: AppProps) => { return <li>{app.nome}</li> })}
+                <ul className={`${styles.appListList} ${viewAppList ? styles['viewList']:""}`}>
+                    {appList.appList.map((app: AppProps) => {
+                        return (
+                            <CardApp key={app.id} app={app} />
+                        )
+                    })
+                    }
                 </ul>
             </div>
 
