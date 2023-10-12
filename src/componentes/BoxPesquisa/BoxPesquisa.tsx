@@ -110,15 +110,16 @@ export const BoxPesquisa = () => {
                     }
                 </ul>
             </div> */}
-            <div className={`${styles.containerListList} ${styles.containerList}`}
-                style={{ width: viewAppList ? "auto" : "min-content" }}
+            <div 
+                className={`${styles.containerListList}`}
+                style={{ maxWidth: viewAppList ? "30%" : "min-content" }}
             >
 
                 <div
                     className={`${styles.containerListHeader} `}
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
-                    <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + " apps selecionados"}</span>
+                    <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps selecionados"}</span>
 
                     {
                         viewAppList &&
@@ -135,7 +136,7 @@ export const BoxPesquisa = () => {
 
                 <div
                     className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
+                    style={{ height: viewAppList && lengthAppList > 0 ? "auto" : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
