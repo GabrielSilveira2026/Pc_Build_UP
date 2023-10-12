@@ -91,13 +91,32 @@
 
 .containerListHeader {
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     background: linear-gradient(90deg ,var(--blue-medium), var(--color-low-light));
     border-radius: 8px 8px 0 0;
     color: #fff;
     cursor: pointer;
     display: flex;
     padding: .5em 1em;
+    gap: 10px;
+}
+
+.clearList_ArrowIcon{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.btnClearAppList {
+    cursor: pointer;
+    padding: 5px;
+    border: none;
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.btnClearAppList:hover{
+    opacity: 0.8;
 }
 
 .containerListBody {
@@ -130,19 +149,6 @@
     position: relative;
 }
 
-.btnClearAppList {
-    cursor: pointer;
-    padding: 5px;
-    border: none;
-    background-color: rgb(255, 255, 255, 0.1);
-    border-radius: 8px;
-}
-
-.btnClearAppList:hover{
-    opacity: 0.8;
-}
-
-
 .btnDeselect {
     cursor: pointer;
     border: none;
@@ -164,6 +170,7 @@
     border: none;
     border-radius: 8px;
 }
+
 
 @media (max-width: 480px) {
 

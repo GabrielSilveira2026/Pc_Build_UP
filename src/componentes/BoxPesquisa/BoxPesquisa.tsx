@@ -1,10 +1,9 @@
 "use client"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faX } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useState } from 'react'
-import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import styles from './boxPesquisa.module.css'
 import { CardApp } from '../CardApp/CardApp';
@@ -110,9 +109,9 @@ export const BoxPesquisa = () => {
                     }
                 </ul>
             </div> */}
-            <div 
+            <div
                 className={`${styles.containerListList}`}
-                style={{width: viewAppList ? "auto" : "min-content" }}
+                style={{ width: viewAppList ? "auto" : "min-content" }}
             >
 
                 <div
@@ -120,23 +119,29 @@ export const BoxPesquisa = () => {
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
                     <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps"}</span>
+                    <div className={styles.clearList_ArrowIcon}>
+                        {
+                            viewAppList &&
+                            lengthAppList > 0 &&
+                            <button
+                                className={styles.btnClearAppList}
+                                onClick={() => { appList.clearAppList() }}
+                            >
+                                Limpar lista
+                            </button>
+                        }
 
-                    {
-                        viewAppList &&
-                        lengthAppList > 0 &&
-                        <button
-                            className={styles.btnClearAppList}
-                            onClick={() => { appList.clearAppList() }}
-                        >
-                            Limpar lista
-                        </button>
-                    }
+                        <FontAwesomeIcon
+                            className={styles.btnArrowIcon}
+                            icon={viewAppList ? faAngleDown : faAngleUp}
+                        />
+                    </div>
 
                 </div>
 
                 <div
                     className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? "auto" : 0 }}
+                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {

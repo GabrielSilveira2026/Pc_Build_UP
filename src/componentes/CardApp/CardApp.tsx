@@ -38,13 +38,13 @@ export const CardApp = ({ app }: CardProps) => {
                 <a 
                     href={`https://store.steampowered.com/app/${app.id_jogo_steam}`}
                     target="blank"
-                    className={styles.btnSteam}
+                    className={styles.buttons}
                 >
                     Steam
                 </a>
 
                 <button
-                    className={styles.btnSelect}
+                    className={styles.buttons}
                     onClick={() => mudaEstado()}
                 >
                     {app.estado === "selected" ? "Remover" : "Adicionar"}
