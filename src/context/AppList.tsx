@@ -14,13 +14,20 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         ]))
     }
 
-    const removeToAppList = (id_app: number) => {
+    function removeToAppList(id_app: number) {
         let newAppList = appList.filter(app => app.id_jogo_steam !== id_app)
         // setAppList([])
         setAppList(newAppList)
     }
+
+    function clearAppList() {
+        appList.forEach(app => {
+            app.estado = "unselected"
+        });
+        setAppList([])
+    }
     return (
-        <AppContext.Provider value={{ appList , addToAppList, removeToAppList }}>
+        <AppContext.Provider value={{ appList , addToAppList, removeToAppList, clearAppList }}>
             {children}
         </AppContext.Provider>
     )

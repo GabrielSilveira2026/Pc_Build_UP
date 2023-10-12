@@ -1,7 +1,7 @@
 "use client"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faX } from "@fortawesome/free-solid-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useState } from 'react'
 import { Button } from '../Button/Button'
@@ -28,7 +28,8 @@ export const BoxPesquisa = () => {
     const [app, setApp] = useState<string>("")
     const [listAppResults, setListAppResults] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
-    const [viewAppList, setViewAppList] = useState<boolean>(false)
+    const [viewAppList, setViewAppList] = useState<boolean>(true)
+    const lengthAppList = appList.appList.length
 
     //Nota: Mover essa função para um arquivo "httpservices"
     async function pesquisaApps(app: string, offset: number) {
@@ -109,39 +110,54 @@ export const BoxPesquisa = () => {
                     }
                 </ul>
             </div> */}
-            <div className={`${styles.containerListList} ${styles.containerList}`}>
+            <div className={`${styles.containerListList} ${styles.containerList}`}
+                style={{ width: viewAppList ? "auto" : "min-content" }}
+            >
 
-                <div className={`${styles.containerListHeader} `}
-                    onClick={() => {appList.appList.length > 0 && setViewAppList(!viewAppList) }}
+                <div
+                    className={`${styles.containerListHeader} `}
+                    onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
-                    <span>{viewAppList && (appList.appList.length === 0 )? "Lista de aplicativos": appList.appList.length + " apps selecionados"}</span>
-                    {viewAppList && appList.appList.length > 0 && <button>Limpar lista</button>}
+                    <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + " apps selecionados"}</span>
+
+                    {
+                        viewAppList &&
+                        lengthAppList > 0 &&
+                        <button
+                            className={styles.btnClearAppList}
+                            onClick={() => { appList.clearAppList() }}
+                        >
+                            Limpar lista
+                        </button>
+                    }
+
                 </div>
 
-                <div   
+                <div
                     className={`${styles.containerListBody}`}
-                    style={{height: viewAppList ? "auto": 0}}
+                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
                             return (
                                 // <CardApp key={app.id} app={app} />
-                                <div style={{display: "flex",  justifyContent:"space-between"}}>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <li key={app.id}>{app.nome}</li>
-                                    <button onClick={()=>{
-                                        app.estado = "unselected"
-                                        appList.removeToAppList(app.id_jogo_steam);
-                                    }}>X</button>
+                                    <button
+                                        className={styles.btnDeselect} onClick={() => {
+                                            app.estado = "unselected"
+                                            appList.removeToAppList(app.id_jogo_steam);
+                                        }}
+                                    >
+                                        X
+                                    </button>
                                 </div>
                             )
                         })
                         }
                     </ul>
-                    {viewAppList && appList.appList.length > 0 && <button>Montar PC</button>}
                 </div>
-
             </div>
-
         </div>
     )
 }

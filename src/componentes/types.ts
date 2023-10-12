@@ -1,5 +1,5 @@
 export interface AppProps {
-    estado: string,
+    estado: "selected" | "unselected",
     id: number,
     id_jogo_steam: number,
     imagem: string,
