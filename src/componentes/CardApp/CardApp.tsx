@@ -13,9 +13,9 @@ export const CardApp = ({ app }: CardProps) => {
     const appList = useAppListContext()
 
     const mudaEstado = () => {
-        if (app.estado === "circle") {
+        if (app.estado === "unselected") {
             if (appList.appList.length < 5) {
-                app.estado = "check-circle"
+                app.estado = "selected"
                 appList.addToAppList(app)
 
             }
@@ -24,7 +24,7 @@ export const CardApp = ({ app }: CardProps) => {
             }
         }
         else {
-            app.estado = "circle"
+            app.estado = "unselected"
             appList.removeToAppList(app.id_jogo_steam)
         }
     }
@@ -47,11 +47,11 @@ export const CardApp = ({ app }: CardProps) => {
                     className={styles.btnSelect}
                     onClick={() => mudaEstado()}
                 >
-                    {app.estado === "check-circle" ? "Remover" : "Adicionar"}
+                    {app.estado === "selected" ? "Remover" : "Adicionar"}
                 </button>
 
             </div>
-            {/* <Button style={styles.btnSelect} onClick={() => mudaEstado()} text={app.estado === "check-circle"? "x" : "+"}/> */}
+            {/* <Button style={styles.btnSelect} onClick={() => mudaEstado()} text={app.estado === "selected"? "x" : "+"}/> */}
         </div>
     )
 }

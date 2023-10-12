@@ -16,7 +16,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     const removeToAppList = (id_app: number) => {
         let newAppList = appList.filter(app => app.id_jogo_steam !== id_app)
-        setAppList([])
+        // setAppList([])
         setAppList(newAppList)
     }
     return (

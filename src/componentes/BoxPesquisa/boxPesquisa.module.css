@@ -39,7 +39,7 @@
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
-.appListIcon {
+/* .appListIcon {
     cursor: pointer;
     background-color: white;
     color: black;
@@ -57,13 +57,13 @@
 
 
 .appListList{
-    font-size: 12px;
+    font-size: 80%;
     list-style: none;
     visibility: hidden;
     background-color: white;
     color: white;
     width: 200px;
-    height: fit-content;
+    height: 70%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -77,8 +77,58 @@
 
 .viewList{
     visibility: visible;
+} 
+*/
+.containerList{
+    transition: transform .2s cubic-bezier(.55,.06,.68,.19);
 }
 
+.containerListList{
+    bottom: 1em;
+    position: fixed;
+    right: 0;
+    transform: translateX(-1em);
+    z-index: 100;
+}
+
+.containerListList .containerListHeader{
+    align-items: center;
+    background: linear-gradient(134deg,#3c59fc,#7600e0);
+    border-radius: 8px 8px 0  0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    padding: .5em 1em;
+}
+
+.containerListList .containerListBody{
+    color: black;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 4px 4px rgba(0,0,0,.1);
+    height: 0;
+    overflow: hidden;
+    transition: height .3s;
+}
+.containerListList .containerListBody ul {
+    box-shadow: inset 0 0 4px 1px rgba(0,0,0,.1);
+    list-style: none;
+    margin: 0;
+    max-height: 188px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.containerListList .containerListBody li {
+    align-items: center;
+    animation-duration: .25s;
+    animation-name: ComparisonList__appear___13qCw;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    margin: 0 1em;
+    padding: .5em 30px .5em 0;
+    position: relative;
+}
 @media (max-width: 600px) {
 
     .ResultArea {
