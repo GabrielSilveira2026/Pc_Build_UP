@@ -112,14 +112,14 @@ export const BoxPesquisa = () => {
             </div> */}
             <div 
                 className={`${styles.containerListList}`}
-                style={{ maxWidth: viewAppList ? "30%" : "min-content" }}
+                style={{width: viewAppList ? "auto" : "min-content" }}
             >
 
                 <div
                     className={`${styles.containerListHeader} `}
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
-                    <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps selecionados"}</span>
+                    <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps"}</span>
 
                     {
                         viewAppList &&
