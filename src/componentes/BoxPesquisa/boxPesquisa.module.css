@@ -35,19 +35,19 @@
 
 .resultArea {
     display: grid;
-    gap: 8px;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px;
+    padding-bottom: 100px;
 }
 
 .containerListList {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
     position: fixed;
     bottom: 1em;
     right: .5rem;
     z-index: 100;
-    max-width: 35%;
+    max-width: 40%;
 }
 
 .containerListHeader {
@@ -60,6 +60,10 @@
     display: flex;
     padding: .5em 1em;
     gap: 10px;
+}
+
+.containerListHeaderOpen {
+    border-bottom-left-radius: 0;
 }
 
 @keyframes slideIn {
@@ -83,10 +87,6 @@
     margin-left: auto;
     border: none;
     animation: slideIn .5s 
-}
-
-.containerListHeaderOpen {
-    border-bottom-left-radius: 0;
 }
 
 .clearList_ArrowIcon {
@@ -118,6 +118,8 @@
     align-items: center;
     justify-content: center;
     font-size: 80%;
+    min-height: auto
+
 }
 
 .containerListBody ul {
@@ -134,6 +136,10 @@
     border-bottom: 1px solid #dfdfdf;
     padding: .5rem;
     gap: .5rem
+}
+
+.imgItemAppList{
+    height:80%
 }
 
 .containerListBody li {
@@ -154,23 +160,28 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
-    .ResultArea {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    .resultArea {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 
     .containerListList {
-        font-size: 75%;
         max-width: 85%;
     }
 
     .containerListBody {
-        min-height: auto
+        font-size: 75%;
     }
 
     .btnClearAppList {
         font-size: 10px
     }
 
+}
+
+@media (max-width: 300px) {
+    .containerListBody {
+        font-size: 50%;
+    }
 }

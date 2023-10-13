@@ -138,6 +138,7 @@ export const BoxPesquisa = () => {
                         {appList.appList.map((app: AppProps) => {
                             return (
                                 <div className={styles.itemAppList}>
+                                    <img className={styles.imgItemAppList} src={app.imagem} onClick={()=>{pesquisa(app.nome)}}/>
                                     <li key={app.id}>{app.nome}</li>
                                     <button
                                         className={styles.btnDeselect} onClick={() => {
