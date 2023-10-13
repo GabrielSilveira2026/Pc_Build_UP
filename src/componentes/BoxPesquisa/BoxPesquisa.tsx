@@ -92,30 +92,13 @@ export const BoxPesquisa = () => {
                     })
                 }
             </div>
-            {/* <div
-                className={styles.appListIcon}
-                id="cart-icon"
-            >
-                <div
-                    onClick={() => {setViewAppList(!viewAppList)}}>
-                    {viewAppList ? "↓" : appList.appList.length || "↑"}
-                </div>
-                <ul className={`${styles.appListList} ${viewAppList ? styles['viewList']:""}`}>
-                    {appList.appList.map((app: AppProps) => {
-                        return (
-                            <CardApp key={app.id} app={app} />
-                        )
-                    })
-                    }
-                </ul>
-            </div> */}
             <div
                 className={`${styles.containerListList}`}
                 style={{ width: viewAppList ? "auto" : "min-content" }}
             >
 
                 <div
-                    className={`${styles.containerListHeader} `}
+                    className={`${styles.containerListHeader} ${styles.containerListHeaderOpen} `}
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
                     <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps"}</span>
@@ -133,7 +116,7 @@ export const BoxPesquisa = () => {
 
                         <FontAwesomeIcon
                             className={styles.btnArrowIcon}
-                            icon={viewAppList ? faAngleDown : faAngleUp}
+                            icon={viewAppList && lengthAppList > 0? faAngleDown : faAngleUp}
                         />
                     </div>
 
@@ -141,13 +124,12 @@ export const BoxPesquisa = () => {
 
                 <div
                     className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
+                    style={{ height: viewAppList && lengthAppList > 0 ? "auto": 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
                             return (
-                                // <CardApp key={app.id} app={app} />
-                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <div className={styles.itemAppList}>
                                     <li key={app.id}>{app.nome}</li>
                                     <button
                                         className={styles.btnDeselect} onClick={() => {

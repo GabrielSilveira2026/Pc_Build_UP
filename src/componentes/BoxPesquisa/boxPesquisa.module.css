@@ -39,54 +39,12 @@
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
-/* .appListIcon {
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    z-index: 1;
-}
-
-
-.appListList{
-    font-size: 80%;
-    list-style: none;
-    visibility: hidden;
-    background-color: white;
-    color: white;
-    width: 200px;
-    height: 70%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    border-radius: 8px;
-    position: fixed;
-    right: 25px;
-    bottom: 65px;
-    gap: 8px;
-}
-
-.viewList{
-    visibility: visible;
-} 
-*/
-
 .containerListList {
-    transition: transform .2s cubic-bezier(.55, .06, .68, .19);
     bottom: 1em;
     position: fixed;
-    right: 0;
-    transform: translateX(-1em);
+    right: .5rem;
     z-index: 100;
+    max-width: 30%;
 }
 
 .containerListHeader {
@@ -132,21 +90,23 @@
 }
 
 .containerListBody ul {
-    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, .1);
+    /* box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, .1); */
     list-style: none;
     margin: 0;
     overflow-y: auto;
     padding: 0;
 }
 
-.containerListBody li {
-    align-items: center;
-    animation-duration: .25s;
-    border-bottom: 1px solid #dfdfdf;
+.itemAppList{
     display: flex;
-    margin: 0 1em;
-    padding: .5em 15px .5em 0;
-    position: relative;
+    align-items: center;
+    border-bottom: 1px solid #dfdfdf;
+    padding: .5rem;
+    gap: .5rem
+}
+
+.containerListBody li {
+    width: 90%;
 }
 
 .btnDeselect {
@@ -157,7 +117,6 @@
     width: 25px;
     height: 25px;
     border-radius: 100%;
-    margin: 10px;
 }
 
 .btnDeselect:hover {
@@ -188,7 +147,7 @@
     }
 
     .btnClearAppList{
-        font-size:12px
+        font-size:10px
     }
 
 }
