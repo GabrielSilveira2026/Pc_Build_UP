@@ -33,24 +33,27 @@
     transform: scale(0.98, 0.98);
 }
 
-.ResultArea {
+.resultArea {
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .containerListList {
-    bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     position: fixed;
+    bottom: 1em;
     right: .5rem;
     z-index: 100;
-    max-width: 30%;
+    max-width: 35%;
 }
 
 .containerListHeader {
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg ,var(--blue-medium), var(--color-low-light));
+    background: linear-gradient(90deg, var(--blue-medium), var(--color-low-light));
     border-radius: 8px 8px 0 8px;
     color: #fff;
     cursor: pointer;
@@ -59,11 +62,34 @@
     gap: 10px;
 }
 
-.containerListHeaderOpen{
+@keyframes slideIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btnPcBuild {
+    cursor: pointer;
+    font-size: 1rem;
+    background: linear-gradient(45deg, var(--blue-medium), var(--color-low-light));
+    margin-bottom: 5px;
+    border-radius: 8px;
+    padding: 10px;
+    width: fit-content;
+    margin-left: auto;
+    border: none;
+    animation: slideIn .5s 
+}
+
+.containerListHeaderOpen {
     border-bottom-left-radius: 0;
 }
 
-.clearList_ArrowIcon{
+.clearList_ArrowIcon {
     display: flex;
     gap: 5px;
     align-items: center;
@@ -77,7 +103,7 @@
     border-radius: 8px;
 }
 
-.btnClearAppList:hover{
+.btnClearAppList:hover {
     opacity: 0.8;
 }
 
@@ -88,9 +114,10 @@
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
     overflow: hidden;
     transition: height .5s;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 80%;
 }
 
 .containerListBody ul {
@@ -100,7 +127,8 @@
     padding: 0;
 }
 
-.itemAppList{
+.itemAppList {
+    height: 50px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #dfdfdf;
@@ -116,7 +144,7 @@
     cursor: pointer;
     border: none;
     color: red;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     width: 25px;
     height: 25px;
     border-radius: 100%;
@@ -126,14 +154,6 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.btnPCBuild {
-    cursor: pointer;
-    padding: 5px;
-    border: none;
-    border-radius: 8px;
-}
-
-
 @media (max-width: 480px) {
 
     .ResultArea {
@@ -141,16 +161,16 @@
     }
 
     .containerListList {
+        font-size: 75%;
         max-width: 85%;
-        font-size: 12px;
     }
 
-    .containerListBody{
-        min-height:auto
+    .containerListBody {
+        min-height: auto
     }
 
-    .btnClearAppList{
-        font-size:10px
+    .btnClearAppList {
+        font-size: 10px
     }
 
 }

@@ -28,7 +28,7 @@ export const BoxPesquisa = () => {
     const [listAppResults, setListAppResults] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [viewAppList, setViewAppList] = useState<boolean>(true)
-    const lengthAppList = appList.appList.length
+    const lengthAppList: number = appList.appList.length
 
     //Nota: Mover essa função para um arquivo "httpservices"
     async function pesquisaApps(app: string, offset: number) {
@@ -88,7 +88,7 @@ export const BoxPesquisa = () => {
 
             {loading && <>Carregando</>}
 
-            <div className={styles.ResultArea}>
+            <div className={styles.resultArea}>
                 {
                     listAppResults.map((app) => {
                         return (
@@ -99,8 +99,14 @@ export const BoxPesquisa = () => {
             </div>
 
             <div className={`${styles.containerListList}`}
-                style={{ width: viewAppList ? "auto" : "min-content" }}
+                style={{ width: viewAppList ? "auto" : "fit-content" }}
             >
+                {   
+                    lengthAppList > 0 &&
+                    <button className={styles.btnPcBuild}>
+                        Montar Pc
+                    </button>
+                }
 
                 <div className={`${styles.containerListHeader} ${viewAppList && styles.containerListHeaderOpen} `}
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
@@ -108,8 +114,7 @@ export const BoxPesquisa = () => {
                     <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps"}</span>
                     <div className={styles.clearList_ArrowIcon}>
                         {
-                            viewAppList &&
-                            lengthAppList > 0 &&
+                            viewAppList && lengthAppList > 0 &&
                             <button
                                 className={styles.btnClearAppList}
                                 onClick={() => { appList.clearAppList() }}
@@ -127,7 +132,7 @@ export const BoxPesquisa = () => {
                 </div>
 
                 <div className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? "auto" : 0 }}
+                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
