@@ -24,7 +24,7 @@ interface Response {
 
 export const BoxPesquisa = () => {
     const appList = useAppListContext()
-    const [app, setApp] = useState<string>("")
+    const [appSearched, setAppSearched] = useState<string>("")
     const [listAppResults, setListAppResults] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [viewAppList, setViewAppList] = useState<boolean>(true)
@@ -44,29 +44,34 @@ export const BoxPesquisa = () => {
         let offset: number = 0
         let response: Response
         let listaAuxiliar: AppProps[] = []
-        try {
-            do {
-                response = await pesquisaApps(app, offset)
-
-                for (var i = 0; i < response.count; i++) {
-                    let app: AppProps = response?.items[i]
-                    let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
-                    app.estado = jogoEstaSelecionado ? 'selected' : 'unselected'
-                    listaAuxiliar.push(app)
+        app = app.replace(/[^0-9A-Za-z\s]/g, "").trim()
+        if (app != "") {
+            try {
+                do {
+                    response = await pesquisaApps(app, offset)
+    
+                    for (var i = 0; i < response.count; i++) {
+                        let app: AppProps = response?.items[i]
+                        let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
+                        app.estado = jogoEstaSelecionado ? 'selected' : 'unselected'
+                        listaAuxiliar.push(app)
+                    }
+                    offset += 10000
+                } while (response.hasMore === true);
+    
+    
+                setLoading(false)
+                if (listaAuxiliar.length !== 0) {
+                    setListAppResults(listaAuxiliar)
+                } else {
+                    alert("Nenhum jogo encontrado")
                 }
-                offset += 10000
-            } while (response.hasMore === true);
-
-
-            setLoading(false)
-            if (listaAuxiliar.length !== 0) {
-                setListAppResults(listaAuxiliar)
-            } else {
-                alert("Nenhum jogo encontrado")
+            } 
+            catch (error) {    
+                alert("Desculpe, ocorreu um erro no servidor")
             }
-        } catch (error) {
-            alert("Desculpe, ocorreu um erro no servidor")
         }
+        setLoading(false)
     }
 
     return (
@@ -75,13 +80,13 @@ export const BoxPesquisa = () => {
                 className={styles.searchArea}
                 onSubmit={(event) => {
                     event.preventDefault();
-                    app && pesquisa(app)
+                    pesquisa(appSearched)
                 }}
             >
-                <Input onChange={(event) => setApp(event.target.value)} placeholder="Procurar" />
+                <Input onChange={(event) => setAppSearched(event.target.value)} value={appSearched} placeholder="Procurar" />
                 <FontAwesomeIcon
                     className={styles.btnSearch}
-                    onClick={() => { app && pesquisa(app) }}
+                    onClick={() => { pesquisa(appSearched) }}
                     icon={faSearch}
                 />
             </form>
