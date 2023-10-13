@@ -43,26 +43,29 @@ export const BoxPesquisa = () => {
         setLoading(true)
         let offset: number = 0
         let response: Response
-        let listaAuxiliar: AppProps[] = []//!
-        do {
-            response = await pesquisaApps(app, offset)
+        let listaAuxiliar: AppProps[] = []
+        try {
+            do {
+                response = await pesquisaApps(app, offset)
 
-            for (var i = 0; i < response.count; i++) {
-                let app: AppProps = response?.items[i]
-                let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
-                app.estado = jogoEstaSelecionado ? 'selected' : 'unselected'
-                listaAuxiliar.push(app)
+                for (var i = 0; i < response.count; i++) {
+                    let app: AppProps = response?.items[i]
+                    let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
+                    app.estado = jogoEstaSelecionado ? 'selected' : 'unselected'
+                    listaAuxiliar.push(app)
+                }
+                offset += 10000
+            } while (response.hasMore === true);
+
+
+            setLoading(false)
+            if (listaAuxiliar.length !== 0) {
+                setListAppResults(listaAuxiliar)
+            } else {
+                alert("Nenhum jogo encontrado")
             }
-            offset += 10000
-        } while (response.hasMore === true);
-
-
-        setLoading(false)
-        if (listaAuxiliar.length !== 0) {
-            setListAppResults(listaAuxiliar)
-        } else {
-            // setListaJogos(listaInicial)
-            alert("Nenhum jogo encontrado")
+        } catch (error) {
+            alert("Desculpe, ocorreu um erro no servidor")
         }
     }
 
@@ -82,7 +85,9 @@ export const BoxPesquisa = () => {
                     icon={faSearch}
                 />
             </form>
+
             {loading && <>Carregando</>}
+
             <div className={styles.ResultArea}>
                 {
                     listAppResults.map((app) => {
@@ -92,13 +97,12 @@ export const BoxPesquisa = () => {
                     })
                 }
             </div>
-            <div
-                className={`${styles.containerListList}`}
+
+            <div className={`${styles.containerListList}`}
                 style={{ width: viewAppList ? "auto" : "min-content" }}
             >
 
-                <div
-                    className={`${styles.containerListHeader} ${styles.containerListHeaderOpen} `}
+                <div className={`${styles.containerListHeader} ${viewAppList && styles.containerListHeaderOpen} `}
                     onClick={() => { lengthAppList > 0 && setViewAppList(!viewAppList) }}
                 >
                     <span>{lengthAppList == 0 ? "Lista de aplicativos" : lengthAppList + "/5 apps"}</span>
@@ -116,15 +120,14 @@ export const BoxPesquisa = () => {
 
                         <FontAwesomeIcon
                             className={styles.btnArrowIcon}
-                            icon={viewAppList && lengthAppList > 0? faAngleDown : faAngleUp}
+                            icon={viewAppList && lengthAppList > 0 ? faAngleDown : faAngleUp}
                         />
                     </div>
 
                 </div>
 
-                <div
-                    className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? "auto": 0 }}
+                <div className={`${styles.containerListBody}`}
+                    style={{ height: viewAppList && lengthAppList > 0 ? "auto" : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
@@ -145,6 +148,7 @@ export const BoxPesquisa = () => {
                         }
                     </ul>
                 </div>
+
             </div>
         </div>
     )
