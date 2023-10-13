@@ -99,7 +99,6 @@ export const BoxPesquisa = () => {
             </div>
 
             <div className={`${styles.containerListList}`}
-                style={{ width: viewAppList ? "auto" : "fit-content" }}
             >
                 {   
                     lengthAppList > 0 &&
