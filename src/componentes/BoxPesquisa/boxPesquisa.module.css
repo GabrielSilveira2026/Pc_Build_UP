@@ -131,7 +131,7 @@
 }
 
 .itemAppList {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #dfdfdf;

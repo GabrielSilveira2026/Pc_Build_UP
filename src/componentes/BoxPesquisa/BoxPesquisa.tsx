@@ -136,7 +136,7 @@ export const BoxPesquisa = () => {
                 </div>
 
                 <div className={`${styles.containerListBody}`}
-                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 50 : 0 }}
+                    style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 60 : 0 }}
                 >
                     <ul className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {

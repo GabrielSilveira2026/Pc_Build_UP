@@ -14,16 +14,13 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
                 ...old,
                 appToAdd
             ]))
-            return 1
         }
-        return 0
     }
 
     function removeToAppList(appToRemove: AppProps) {
         appToRemove.estado = "unselected"
         let newAppList = appList.filter(app => app.id_jogo_steam !== appToRemove.id_jogo_steam)
         setAppList(newAppList)
-        return 0
     }
 
     function clearAppList() {
