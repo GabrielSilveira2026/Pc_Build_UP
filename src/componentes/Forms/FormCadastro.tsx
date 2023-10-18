@@ -8,9 +8,12 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios, { AxiosResponse } from "axios";
+import Router from "next/router";
+import { Button } from "../Button/Button";
 
 const schema = z.object({
-    nomeUsuario: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
+    nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
 
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
 
@@ -33,10 +36,8 @@ const schema = z.object({
 
 type FormProps = z.infer<typeof schema>
 
-function Form() {
+const FormCadastro = () => {
     const router = useRouter();
-    const [verSenha, setVerSenha] = useState(false)
-    const [verConfirmaSenha, setVerConfirmaSenha] = useState(false)
 
     const {
         register,
@@ -48,27 +49,40 @@ function Form() {
         resolver: zodResolver(schema)
     })
 
-    const handleForm = (data: FormProps) => {
-        console.log(data);
+    const handleForm = async(data: FormProps) => {
+        const user: object = {
+            nome: data.nome,
+            email: data.email,
+            senha: data.senha
+        }
         
-        router.push(`/login/${data}`);
+        const resposta: Response = await fetch("http://164.152.38.61/usuario/cadastro", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=UTF-8",
+            },
+            body: JSON.stringify({ usuario: user }),
+          }
+        )
+        
+        if (resposta.status === 201) {
+            console.log("cadastrado");
+        }
     }
-
-    console.log(errors);
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(handleForm)}>
             <Input
-                {...register('nomeUsuario')}
-                label="Nome de Usuário: "
+                {...register('nome')}
+                label="Nome de Usuário"
                 type="text"
                 placeholder="Nome de Usuário"
-                textoAjuda={errors.nomeUsuario?.message}
+                textoAjuda={errors.nome?.message}
             />
 
             <Input
                 {...register('email')}
-                label="Email: "
+                label="Email"
                 type="email"
                 placeholder="exemplo@gmail.com"
                 textoAjuda={errors.email?.message}
@@ -76,8 +90,8 @@ function Form() {
 
             <Input
                 {...register('senha')}
-                label="Senha: "
-                type={verSenha ? "text" : "password"}
+                label="Senha"
+                type="password"
                 placeholder="***********"
                 textoAjuda={errors.senha?.message}
             />
@@ -85,14 +99,15 @@ function Form() {
             <Input
                 {...register('confirmaSenha')}
                 label="Confirme a senha"
-                type={verConfirmaSenha ? "text" : "password"}
+                type="password"
                 placeholder="***********"
                 textoAjuda={errors.confirmaSenha?.message}
             />
 
-            <button type="submit">Cadastrar</button>
+            <Button type="submit" text="Cadastrar"/>
+
         </form>
     )
 }
 
-export default Form
+export default FormCadastro

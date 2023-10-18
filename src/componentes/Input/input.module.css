@@ -1,0 +1,56 @@
+.boxInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.inputLine {
+    display: flex;
+    align-items: center;
+    border-radius: 5px; 
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+.input {
+    width: 100%;
+    font-size: 1rem;
+    color: white;
+    padding: .6rem;
+    background-color: transparent;
+    border: none;
+}
+
+.input::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+.input:focus {
+    outline: none
+}
+
+.verSenhas {
+    font-size: 1.2rem;
+    width: 35px;
+    margin: 5px;
+    color: white;
+}
+
+.verSenhas:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.textoAjuda {
+    color: rgb(255, 50, 50);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+}
+
+.erro {
+    border-bottom: 1px solid rgb(255, 50, 50);;
+    border-top: 1px solid rgb(255, 50, 50);
+}

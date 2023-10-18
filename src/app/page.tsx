@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { BoxPesquisa } from '@/componentes/BoxPesquisa/BoxPesquisa'
 
 export default function Home() {
   return (
     <main>
-      Pagina Principal
+      <BoxPesquisa/>
     </main>
   )
 }
