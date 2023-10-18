@@ -37,6 +37,5 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 }
 
 export const useAppListContext = () =>{
-    const cart = useContext(AppContext)
-    return cart
+    return useContext(AppContext)
 }
