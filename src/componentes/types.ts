@@ -10,7 +10,7 @@ export interface AppProps {
 }
 
 export interface UsuarioProps {
-    nome: string;
+    nome?: string;
     email: string;
     senha: string;
 }

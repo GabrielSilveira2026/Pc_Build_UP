@@ -9,6 +9,9 @@ import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../Button/Button";
+import { AxiosResponse } from "axios";
+import { autenticaUsuario } from "@/app/api/httpservices";
+import { UsuarioProps } from "../types";
 
 const schema = z.object({
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
@@ -35,11 +38,17 @@ const FormLogin = () => {
         resolver: zodResolver(schema)
     })
 
-    const handleForm = (data: FormProps) => {
-        console.log(data);
-    }
+    const handleForm = async (data: FormProps) => {
+        const user: UsuarioProps = {
+            email: data.email,
+            senha: data.senha
+        }
+        const response: AxiosResponse = await autenticaUsuario(user)
 
-    console.log(errors);
+        if (response.status === 200) {
+            console.log("Logado, token:", response.data.token);
+        }
+    }
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(handleForm)}>

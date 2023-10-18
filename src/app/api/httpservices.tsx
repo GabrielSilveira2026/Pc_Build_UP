@@ -3,8 +3,8 @@ import axios from "axios";
 
 const regex = /[^0-9a-zA-Z() " : , { } @ . / -]/gi
 
-// const enderecoBackend = "http://164.152.38.61"
-const enderecoBackend = "http://localhost:3005"
+const enderecoBackend = "http://164.152.38.61"
+// const enderecoBackend = "http://localhost:3005"
 
 
 export function pesquisaApps(app: string, offset: number) {
