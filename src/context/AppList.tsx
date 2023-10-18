@@ -7,17 +7,23 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [appList, setAppList] = useState<AppProps[]>([])
 
-    function addToAppList(app: AppProps) {
-        setAppList((old) => ([
-            ...old,
-            app
-        ]))
+    function addToAppList(appToAdd: AppProps) {
+        if (appList.length < 5) {
+            appToAdd.estado = "selected"
+            setAppList((old) => ([
+                ...old,
+                appToAdd
+            ]))
+            return 1
+        }
+        return 0
     }
 
-    function removeToAppList(id_app: number) {
-        let newAppList = appList.filter(app => app.id_jogo_steam !== id_app)
-        // setAppList([])
+    function removeToAppList(appToRemove: AppProps) {
+        appToRemove.estado = "unselected"
+        let newAppList = appList.filter(app => app.id_jogo_steam !== appToRemove.id_jogo_steam)
         setAppList(newAppList)
+        return 0
     }
 
     function clearAppList() {

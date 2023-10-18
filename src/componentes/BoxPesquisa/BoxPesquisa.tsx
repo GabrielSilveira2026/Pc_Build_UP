@@ -97,7 +97,7 @@ export const BoxPesquisa = () => {
                 {
                     listAppResults.map((app) => {
                         return (
-                            <CardApp key={app.id} app={app} />
+                            <CardApp key={app.id_jogo_steam} app={app} />
                         )
                     })
                 }
@@ -147,7 +147,7 @@ export const BoxPesquisa = () => {
                                     <button
                                         className={styles.btnDeselect} onClick={() => {
                                             app.estado = "unselected"
-                                            appList.removeToAppList(app.id_jogo_steam);
+                                            appList.removeToAppList(app);
                                         }}
                                     >
                                         X
