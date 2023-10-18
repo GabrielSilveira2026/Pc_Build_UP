@@ -9,6 +9,8 @@ import styles from './boxPesquisa.module.css'
 import { CardApp } from '../CardApp/CardApp';
 import { AppProps } from '../types';
 import { useAppListContext } from '@/context/AppList';
+import { pesquisaApps } from '@/app/api/httpservices';
+import { AxiosResponse } from 'axios';
 
 interface Response {
     items: AppProps[],
@@ -30,26 +32,18 @@ export const BoxPesquisa = () => {
     const [viewAppList, setViewAppList] = useState<boolean>(true)
     const lengthAppList: number = appList.appList.length
 
-    //Nota: Mover essa função para um arquivo "httpservices"
-    async function pesquisaApps(app: string, offset: number) {
-        const response = await fetch(`https://g4673849dbf8477-kh8pftimtcmp3b10.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/pesquisa/resultados/${app}?limit=10000&offset=${offset}`);
-        if (!response.ok) {
-            throw new Error('Erro ao buscar apps');
-        }
-        return response.json();
-    }
-
     async function pesquisa(app: string) {
         setLoading(true)
         let offset: number = 0
         let response: Response
         let listaAuxiliar: AppProps[] = []
+
         app = app.replace(/[^0-9A-Za-z\s]/g, "").trim()
         if (app != "") {
             try {
                 do {
-                    response = await pesquisaApps(app, offset)
-    
+                    let responseAxios: AxiosResponse = await pesquisaApps(app, offset)
+                    response = responseAxios.data
                     for (var i = 0; i < response.count; i++) {
                         let app: AppProps = response?.items[i]
                         let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
@@ -68,6 +62,8 @@ export const BoxPesquisa = () => {
                 }
             } 
             catch (error) {    
+                console.log(error);
+                
                 alert("Desculpe, ocorreu um erro no servidor")
             }
         }
