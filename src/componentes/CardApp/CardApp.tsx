@@ -14,18 +14,10 @@ export const CardApp = ({ app }: CardProps) => {
 
     const mudaEstado = () => {
         if (app.estado === "unselected") {
-            if (appList.appList.length < 5) {
-                app.estado = "selected"
-                appList.addToAppList(app)
-
-            }
-            else {
-                alert("Você já selecionou 5 apps. Por favor, remova algum deles para adicionar um outro")
-            }
+            appList.addToAppList(app)
         }
         else {
-            app.estado = "unselected"
-            appList.removeToAppList(app.id_jogo_steam)
+            appList.removeToAppList(app)
         }
     }
 
@@ -49,9 +41,7 @@ export const CardApp = ({ app }: CardProps) => {
                 >
                     {app.estado === "selected" ? "Remover" : "Adicionar"}
                 </button>
-
             </div>
-            {/* <Button style={styles.btnSelect} onClick={() => mudaEstado()} text={app.estado === "selected"? "x" : "+"}/> */}
         </div>
     )
 }
