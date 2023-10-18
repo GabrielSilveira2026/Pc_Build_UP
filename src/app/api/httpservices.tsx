@@ -23,18 +23,18 @@ interface usuarioProps {
     senha: string;
 }
 
-export function cadastraUsuario(usuario){
+export function cadastraUsuario(usuario: usuarioProps){
   return axios.post(`${enderecoBackend}/usuario/cadastro`, {usuario:usuario})
 }
 
-export function autenticaUsuario(usuario){
+export function autenticaUsuario(usuario: usuarioProps){
   return axios.post(`${enderecoBackend}/usuario/autentica`, {usuario:usuario})
 }
 
-export function favoritaPc(token, usuario, configSalva){
-  return axios.post({usuario,configSalva},{headers:{token:token}})
-}
+// export function favoritaPc(token: string, usuario: any, configSalva: any){
+//   return axios.post({usuario, configSalva},{headers:{token:token}})
+// }
 
-export function validaToken(tokenjwt){
-  return axios.post(`${enderecoBackend}/usuario/validaToken`, {}, {headers:{tokenjwt :tokenjwt}})
-}
+// export function validaToken(tokenjwt){
+//   return axios.post(`${enderecoBackend}/usuario/validaToken`, {}, {headers:{tokenjwt :tokenjwt}})
+// }
