@@ -1,6 +1,5 @@
 
 import { useAppListContext } from "@/context/AppList";
-import { Button } from "../Button/Button";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
 
@@ -29,7 +28,7 @@ export const CardApp = ({ app }: CardProps) => {
             className={styles.boxButtons}>
                 <a 
                     href={`https://store.steampowered.com/app/${app.id_jogo_steam}`}
-                    target="blank"
+                    target="_blank"
                     className={styles.buttons}
                 >
                     Steam

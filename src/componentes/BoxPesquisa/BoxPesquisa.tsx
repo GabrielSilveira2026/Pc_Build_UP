@@ -11,6 +11,7 @@ import { AppProps } from '../types';
 import { useAppListContext } from '@/context/AppList';
 import { pesquisaApps } from '@/app/api/httpservices';
 import { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 
 interface Response {
     items: AppProps[],
@@ -26,6 +27,7 @@ interface Response {
 
 export const BoxPesquisa = () => {
     const appList = useAppListContext()
+    const router = useRouter()
     const [appSearched, setAppSearched] = useState<string>("")
     const [listAppResults, setListAppResults] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
@@ -103,7 +105,7 @@ export const BoxPesquisa = () => {
             >
                 {   
                     lengthAppList > 0 &&
-                    <button className={styles.btnPcBuild}>
+                    <button onClick={() =>{router.push("recomendados")}}  className={styles.btnPcBuild}>
                         Montar Pc
                     </button>
                 }
