@@ -136,12 +136,12 @@ export const BoxPesquisa = () => {
                 <div className={`${styles.containerListBody}`}
                     style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 60 : 0 }}
                 >
-                    <ul className={`${styles.appListList} `}>
+                    <div className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
                             return (
-                                <div className={styles.itemAppList}>
+                                <div key={app.id} className={styles.itemAppList}>
                                     <img className={styles.imgItemAppList} src={app.imagem} onClick={()=>{setListAppResults([app])}}/>
-                                    <li key={app.id} onClick={()=>{setListAppResults([app])}}>{app.nome}</li>
+                                    <p onClick={()=>{setListAppResults([app])}}>{app.nome}</p>
                                     <button
                                         className={styles.btnDeselect} onClick={() => {
                                             app.estado = "unselected"
@@ -154,7 +154,7 @@ export const BoxPesquisa = () => {
                             )
                         })
                         }
-                    </ul>
+                    </div>
                 </div>
 
             </div>

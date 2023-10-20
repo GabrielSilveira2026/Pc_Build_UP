@@ -73,7 +73,7 @@ export function extraiRequisitosDeUmaLista(listaDeJogos: AppProps[]) {
   return { listaRequisitosMinimos, listaRequisitosRecomendados, listaJogosSemRequisitosMinimos, listaJogosSemRequisitosRecomendados }
 }
 
-export function extraiRequisitosDeUmaListaDeApps(listaDeJogos: AppProps[], tipo: "minimo" | "recomendado") {
+export async function extraiRequisitosDeUmaListaDeApps(listaDeJogos: AppProps[], tipo: "minimo" | "recomendado") {
   let listaRequisitos: RequisitoProps[] = []
   let listaJogosSemRequisitos: JogoSemRequisito[] = []
   for (let app of listaDeJogos) {

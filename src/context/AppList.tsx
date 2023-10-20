@@ -5,7 +5,8 @@ export const AppContext = createContext<any>({})
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
-    const [appList, setAppList] = useState<AppProps[]>([])
+    const [appList, setAppList] = useState<AppProps[]>([
+    ])
 
     function addToAppList(appToAdd: AppProps) {
         if (appList.length < 5) {
