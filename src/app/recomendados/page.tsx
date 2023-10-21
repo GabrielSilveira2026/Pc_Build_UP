@@ -8,7 +8,10 @@ const recomendados = () => {
     return (
         <div className={styles.recomendadosContent}>
             <Suspense fallback={<p>Carregando configuração</p>}>
-                <CardPc tipo="minimo" />
+                <CardPc tipo="minimo"/>
+            </Suspense>
+            <Suspense fallback={<p>Carregando configuração</p>}>
+                <CardPc tipo="recomendado"/>
             </Suspense>
         </div>
     )

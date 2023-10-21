@@ -11,8 +11,8 @@ export function montaPc(requisitos: any) {
   return axios.post(`${enderecoBackend}/montaPc`, { requisitos: requisitos })
 }
 
-export function cadastraUsuario(usuario: UsuarioProps){
-  return axios.post(`${enderecoBackend}/usuario/cadastro`, {usuario:usuario})
+export function cadastraUsuario(usuario: UsuarioProps) {
+  return axios.post(`${enderecoBackend}/usuario/cadastro`, { usuario: usuario })
 }
 
 export function autenticaUsuario(usuario: UsuarioProps) {

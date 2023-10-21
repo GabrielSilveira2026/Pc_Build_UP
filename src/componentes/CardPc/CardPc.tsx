@@ -3,39 +3,62 @@
 import { montaPc } from "@/app/api/httpservices";
 import { useAppListContext } from "@/context/AppList";
 import { extraiRequisitosDeUmaListaDeApps } from "@/utils/utils";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
+import { AppProps } from "../types";
 import styles from "./cardpc.module.css"
 
-// interface CardPcProps {
-//     tipo: "minimo" | "recomendado"
-// }
+interface CardPcProps {
+    tipo: "minimo" | "recomendado"
+}
 
-// interface PcProps {
-//     placa?: PecaProps,
-//     ram?: PecaProps,
-//     rom?: PecaProps,
-//     cpu?: PecaProps,
-// }
+interface PcProps {
+    placa?: PecaProps,
+    ram?: PecaProps,
+    rom?: PecaProps,
+    cpu?: PecaProps,
+}
 
-// interface PecaProps {
-//     title: string;
-//     imagem?: string;
-//     preco?: string
-// }
+interface PecaProps {
+    title: string;
+    imagem?: string;
+    preco?: string
+}
 
-export const CardPc = async ( tipo: "minimo" | "recomendado") => {
-    // const appList = useAppListContext()
-    // const {listaRequisitos, listaJogosSemRequisitos} = await extraiRequisitosDeUmaListaDeApps(appList.appList, tipo)
+export const CardPc = ({ tipo }: CardPcProps) => {
+    const appList = useAppListContext()
+    const { listaRequisitos, listaJogosSemRequisitos } = extraiRequisitosDeUmaListaDeApps(appList.appList, tipo)
+    const [configuracao, setConfiguracao] = useState<PcProps>({})
+    const source = axios.CancelToken.source()
 
-    // const response = await montaPc(listaRequisitos)
-    // let configuracao: PcProps = response.data
-    console.log("render card");
+    tipo === "minimo" && console.log(listaRequisitos);
+
+    useEffect(() => {
+        async function consultaConfig() {
+            try {
+                const response: AxiosResponse = await montaPc(listaRequisitos)
+                setConfiguracao(response.data)
+            }
+            catch (error) {
+                const err = error as AxiosError
+                console.log(err.response?.data);
+            }
+        }
+        consultaConfig()
+
+        return () => {
+            source.cancel('CleanUp')
+        }
+    }, [])
 
     return (
-        <div onClick={() => { console.log("clicado") }} className={styles.cardPc}>
+        <div className={styles.cardPc}>
             <h1>Configuração {tipo === "minimo" ? "Mínima" : "Recomendada"}</h1>
-            {/* <p>Memória ram: {configuracao?.ram?.title || "Não calculado"}</p>
+            <p>Para os jogos: {appList.appList.map((app: AppProps) => <p>{app.nome}</p>)}</p>
+
+            <p>Memória ram: {configuracao?.ram?.title || "Não calculado"}</p>
             <p>Placa de vídeo: {configuracao?.placa?.title || "Não calculado"}</p>
-            <p>Armazenamento: {configuracao?.rom?.title || "Não calculado"}</p> */}
+            <p>Armazenamento: {configuracao?.rom?.title || "Não calculado"}</p>
         </div>
     )
 }

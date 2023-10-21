@@ -3,8 +3,6 @@
     flex-direction: column;
     background-color: var(--color-low-light);
     width: 400px;
-    height: 400px;
-    align-items: center;
     justify-content: center;
     border-radius: 20px;
     transition: all 0.5s;
@@ -14,4 +12,8 @@
 .cardPc:hover {
     transform: scale(1.05,1.05);
     cursor: pointer;
+}
+
+.cardPc .p{
+    font-size: 9px
 }
