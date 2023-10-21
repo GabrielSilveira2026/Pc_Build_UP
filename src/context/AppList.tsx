@@ -8,13 +8,13 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const [appList, setAppList] = useState<AppProps[]>([
         {   
             "id": 5,
-            "estado": "unselected",
-            "id_jogo_steam": 1151640,
-            "imagem": "https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg?t=1667297464",
-            "nome": "Horizon Zero Dawn™ Complete Edition",
+            "estado": "selected",
+            "id_jogo_steam": 1627720,
+            "imagem": "https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157",
+            "nome": "Lies of P",
             "preco": "R$ 199,90",
-            "requisitosminimos": "{\"Armazenamento\": \" 100 GB available space\",\"Cpu\": \" Intel Core i5-2500K@3.3GHz or AMD FX 6300@3.5GHz\",\"Gpu\": \" Nvidia GeForce GTX 780 (3 GB) or AMD Radeon R9 290 (4GB)\",\"Ram\": \" 8 GB RAM\"}",
-            "requisitosrecomendados": "{\"Armazenamento\": \" 100 GB available space\",\"Cpu\": \" Intel Core i7-4770K@3.5GHz or Ryzen 5 1500X@3.5GHz\",\"Gpu\": \" Nvidia GeForce GTX 1060 (6 GB) or AMD Radeon RX 580 (8GB)\",\"Ram\": \"8Gb ram\"}"
+            "requisitosminimos": "{\"Armazenamento\": \" 50 GB de espao disponvel\",\"Cpu\": \" AMD Ryzen 3 1200Intel Core i3-6300\",\"Gpu\": \" AMD Radeon RX 560 4GB / NVIDIA GeForce GTX 960 4GB\",\"Ram\": \" 8 GB de RAM\"}",
+            "requisitosrecomendados": "{\"Armazenamento\": \" 50 GB de espao disponvel\",\"Cpu\": \" AMD Ryzen 3 1200Intel Core i3-6300\",\"Gpu\": \" AMD Radeon RX 6500 XT 4GB / NVIDIA GeForce GTX 1660 6GB\",\"Ram\": \" 16 GB de RAM\"}"
           }
     ])
 
