@@ -56,7 +56,8 @@ export const CardPc = ({ tipo }: CardPcProps) => {
     return (
         <div className={styles.cardPc}>
             <h1>Configuração {tipo === "minimo" ? "Mínima" : "Recomendada"}</h1>
-            <p>Para os jogos: {appList.appList.map((app: AppProps) => <p>{app.nome}</p>)}</p>
+            <p>Para os jogos:</p>
+            {appList.appList.map((app: AppProps) => <p>{app.nome}</p>)}
             <p>Memória ram: {configuracao?.ram?.title || "Não calculado"}</p>
             <p>Placa de vídeo: {configuracao?.placa?.title || "Não calculado"}</p>
             <p>Armazenamento: {configuracao?.rom?.title || "Não calculado"}</p>
