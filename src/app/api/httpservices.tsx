@@ -1,4 +1,4 @@
-import { UsuarioProps } from "@/componentes/types";
+import { UserProps } from "@/componentes/types";
 import axios from "axios";
 
 const enderecoBackend = "http://164.152.38.61"
@@ -11,10 +11,10 @@ export function montaPc(requisitos: any) {
   return axios.post(`${enderecoBackend}/montaPc`, { requisitos: requisitos })
 }
 
-export function cadastraUsuario(usuario: UsuarioProps) {
-  return axios.post(`${enderecoBackend}/usuario/cadastro`, { usuario: usuario })
+export function cadastraUser(user: UserProps) {
+  return axios.post(`${enderecoBackend}/usuario/cadastro`, { usuario: user })
 }
 
-export function autenticaUsuario(usuario: UsuarioProps) {
-  return axios.post(`${enderecoBackend}/usuario/autentica`, { usuario: usuario })
+export function autenticaUser(user: UserProps) {
+  return axios.post(`${enderecoBackend}/usuario/autentica`, { usuario: user })
 }

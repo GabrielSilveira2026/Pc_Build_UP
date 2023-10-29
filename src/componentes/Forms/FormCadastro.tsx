@@ -10,8 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Router from "next/router";
 import { Button } from "../Button/Button";
 import { AxiosResponse } from "axios";
-import { cadastraUsuario } from "@/app/api/httpservices";
-import { UsuarioProps } from "../types";
+import { cadastraUser } from "@/app/api/httpservices";
+import { UserProps } from "../types";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -51,13 +51,13 @@ const FormCadastro = () => {
     })
 
     const handleForm = async(data: FormProps) => {
-        const user: UsuarioProps = {
+        const user: UserProps = {
             nome: data.nome,
             email: data.email,
             senha: data.senha
         }
         
-        const response: AxiosResponse = await cadastraUsuario(user)
+        const response: AxiosResponse = await cadastraUser(user)
         
         if (response.status === 201) {
             console.log("cadastrado");
