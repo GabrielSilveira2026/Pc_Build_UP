@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { AppListProvider } from '@/context/AppList/AppList'
 import { AuthProvider } from '@/context/Auth/AuthContext'
+import { NavBar } from '@/componentes/NavBar/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,17 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <AppListProvider>
-            <header style={{
-              background: "linear-gradient(90deg ,var(--blue-medium), var(--color-low-light))",
-              height: 50,
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              fontSize: 25
-            }}>
-              <Link style={{ color: "white", textDecoration: "none" }} href="/">Home</Link>
-              <Link style={{ color: "white", textDecoration: "none" }} href="/login">Login</Link>
-            </header>
+            <NavBar/>
             {children}
           </AppListProvider>
         </AuthProvider>

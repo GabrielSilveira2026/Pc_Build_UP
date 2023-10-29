@@ -1,7 +1,7 @@
 "use client"
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import {useRouter} from "next/navigation"
-import { setCookie, parseCookies } from "nookies"
+import { setCookie, parseCookies, destroyCookie } from "nookies"
 
 import { autenticaUsuario } from '@/app/api/httpservices'
 import { UserProps } from '@/componentes/types'
@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setCookie(undefined, "PcBuildToken", token, {
             maxAge: 60 * 60 * 1//1 hora
         })
-        console.log(user);
         
         setCookie(undefined, "UserInfo", JSON.stringify(user), {
             maxAge: 60 * 60 * 1//1 hora
@@ -48,8 +47,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         router.push("/")
     }
 
+    function logOut() {
+        destroyCookie(undefined, "UserInfo")
+        destroyCookie(undefined, "PcBuildToken")
+        router.push("/")
+    }
+
     return (
-        <AuthContext.Provider value={{user , isAuthenticated, sigiIn }}>
+        <AuthContext.Provider value={{user , isAuthenticated, sigiIn, logOut}}>
             {children}
         </AuthContext.Provider>
     )

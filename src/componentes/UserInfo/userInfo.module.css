@@ -1,0 +1,24 @@
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.userName{
+    font-size:0.9rem
+}
+
+.userIcon{
+    font-size:30px;
+}
+
+.logOut{
+   color:red;
+   background-color:transparent;
+   border:none
+}
+
+.logOut:hover{
+    cursor: pointer;
+}
