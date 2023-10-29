@@ -31,6 +31,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                                 :
                                 type
                         }
+                        autoComplete="on"
                         ref={ref}
                         {...props}
                     />

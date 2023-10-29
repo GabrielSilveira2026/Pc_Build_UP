@@ -9,9 +9,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Router from "next/router";
 import { Button } from "../Button/Button";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { cadastraUsuario } from "@/app/api/httpservices";
 import { UserProps } from "../types";
+import { useState } from "react";
+import { useAuthContext } from "@/context/Auth/AuthContext";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -38,7 +40,9 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 const FormCadastro = () => {
-    const router = useRouter();
+    const { sigiIn } = useAuthContext()
+
+    const [message, setMessage] = useState<string>("")
 
     const {
         register,
@@ -50,17 +54,32 @@ const FormCadastro = () => {
         resolver: zodResolver(schema)
     })
 
-    const handleForm = async(data: FormProps) => {
-        const user: UserProps = {
-            nome: data.nome,
-            email: data.email,
-            senha: data.senha
+    const handleForm = async (data: FormProps) => {
+
+        try {
+            const response: AxiosResponse = await cadastraUsuario(
+                {
+                    nome: data.nome,
+                    email: data.email,
+                    senha: data.senha
+                }
+            )            
+            if (response.status === 201) {
+                try {
+                    await sigiIn(
+                        {
+                            email: data.email,
+                            senha: data.senha
+                        }
+                    )
+                }
+                catch (error: any | AxiosError) {
+                    setMessage(error?.response?.data.erro)
+                }
+            }
         }
-        
-        const response: AxiosResponse = await cadastraUsuario(user)
-        
-        if (response.status === 201) {
-            console.log("cadastrado");
+        catch (error: any | AxiosError) {
+            setMessage(error?.response?.data.erro)
         }
     }
 
@@ -98,7 +117,14 @@ const FormCadastro = () => {
                 textoAjuda={errors.confirmaSenha?.message}
             />
 
-            <Button type="submit" text="Cadastrar"/>
+            {
+                message
+                &&
+                <p className={styles.message}>{message}</p>
+            }
+
+
+            <Button type="submit" text="Cadastrar" />
 
         </form>
     )
