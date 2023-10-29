@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Router from "next/router";
 import { Button } from "../Button/Button";
 import { AxiosResponse } from "axios";
-import { cadastraUser } from "@/app/api/httpservices";
+import { cadastraUsuario } from "@/app/api/httpservices";
 import { UserProps } from "../types";
 
 const schema = z.object({
@@ -57,7 +57,7 @@ const FormCadastro = () => {
             senha: data.senha
         }
         
-        const response: AxiosResponse = await cadastraUser(user)
+        const response: AxiosResponse = await cadastraUsuario(user)
         
         if (response.status === 201) {
             console.log("cadastrado");

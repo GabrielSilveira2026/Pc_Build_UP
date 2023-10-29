@@ -1,8 +1,9 @@
+"use client"
 import React, { createContext, useContext, useState } from 'react'
-import Router from "next/router"
+import {useRouter} from "next/navigation"
 import { setCookie } from "nookies"
 
-import { autenticaUser } from '@/app/api/httpservices'
+import { autenticaUsuario } from '@/app/api/httpservices'
 import { UserProps } from '@/componentes/types'
 
 interface AuthContextProp {
@@ -13,22 +14,22 @@ interface AuthContextProp {
 
 export const AuthContext = createContext<any>({} as AuthContextProp)
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+    const router = useRouter()
     const [user, setUser] = useState<UserProps | null>(null)
 
     const isAuthenticated = !!user
 
     async function sigiIn({ email, senha }: UserProps) {
-        const response = await autenticaUser({ email, senha })
+        const response = await autenticaUsuario({ email, senha })
+        
         const { token, user } = response.data
         
         setCookie(undefined, "PcBuildToken", token, {
             maxAge: 60 * 60 * 1//1 hora
         })
-
         setUser(user)
-
-        Router.push("/")
+        router.push("/")
     }
 
     return (

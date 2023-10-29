@@ -1,17 +1,16 @@
 "use client"
-
 import styles from "./form.module.css"
 import { Input } from "../Input/Input";
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form"
-import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../Button/Button";
-import { AxiosResponse } from "axios";
-import { autenticaUser } from "@/app/api/httpservices";
+import { AxiosError, AxiosResponse } from "axios";
+import { autenticaUsuario } from "@/app/api/httpservices";
 import { UserProps } from "../types";
+import { useAuthContext } from "@/context/Auth/AuthContext";
+import { useState } from "react";
 
 const schema = z.object({
     email: z.string().nonempty("Insira um email ").email("Insira um email válido"),
@@ -26,7 +25,8 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 const FormLogin = () => {
-    const router = useRouter();
+    const { sigiIn } = useAuthContext()
+    const [message, setMessage] = useState<string>("")
 
     const {
         register,
@@ -39,14 +39,20 @@ const FormLogin = () => {
     })
 
     const handleForm = async (data: FormProps) => {
+        setMessage("")
+
         const user: UserProps = {
             email: data.email,
             senha: data.senha
         }
-        const response: AxiosResponse = await autenticaUser(user)
 
-        if (response.status === 200) {
-            console.log("Logado, token:", response.data.token);
+        try {
+            await sigiIn(user)
+        } 
+        catch (error: any | AxiosError) {
+            if (error?.response?.status === 401) {
+                setMessage(error?.response?.data.erro)
+            }
         }
     }
 
@@ -68,6 +74,13 @@ const FormLogin = () => {
                 placeholder="***********"
                 textoAjuda={errors.senha?.message}
             />
+
+            {
+                message 
+                && 
+                <p className={styles.message}>{message}</p>
+            }
+
             <Button type="submit" text="Login"/>
         </form>
     )
