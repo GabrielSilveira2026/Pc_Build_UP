@@ -8,7 +8,7 @@ import { Input } from '../Input/Input'
 import styles from './boxPesquisa.module.css'
 import { CardApp } from '../CardApp/CardApp';
 import { AppProps } from '../types';
-import { useAppListContext } from '@/context/AppList';
+import { useAppListContext } from '@/context/AppList/AppList';
 import { pesquisaApps } from '@/app/api/httpservices';
 import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';

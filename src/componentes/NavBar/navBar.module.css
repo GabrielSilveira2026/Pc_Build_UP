@@ -1,0 +1,13 @@
+.navBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    font-size: 25px;
+    background: linear-gradient(90deg ,var(--blue-medium), var(--color-low-light));
+}
+
+.linkHome{
+    color: white;
+    text-decoration: none
+}

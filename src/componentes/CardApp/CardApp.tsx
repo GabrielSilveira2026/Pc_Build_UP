@@ -1,5 +1,5 @@
 
-import { useAppListContext } from "@/context/AppList";
+import { useAppListContext } from "@/context/AppList/AppList";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
 

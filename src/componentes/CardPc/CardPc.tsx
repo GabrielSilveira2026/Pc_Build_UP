@@ -1,7 +1,7 @@
 "use client"
 
 import { montaPc } from "@/app/api/httpservices";
-import { useAppListContext } from "@/context/AppList";
+import { useAppListContext } from "@/context/AppList/AppList";
 import { extraiRequisitosDeUmaListaDeApps } from "@/utils/utils";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useState } from "react";

@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
-import { Provider } from '@/context/Provider'
+import { AppListProvider } from '@/context/AppList/AppListProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
+        <AppListProvider>
           <header style={{
             background: "linear-gradient(90deg ,var(--blue-medium), var(--color-low-light))",
             height: 50,
@@ -32,7 +32,7 @@ export default function RootLayout({
             <Link style={{ color: "white", textDecoration: "none" }} href="/login">Login</Link>
           </header>
           {children}
-        </Provider>
+        </AppListProvider>
       </body>
     </html>
   )
