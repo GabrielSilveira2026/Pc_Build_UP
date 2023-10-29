@@ -31,7 +31,7 @@ export const CardPc = ({ tipo }: CardPcProps) => {
     const [configuracao, setConfiguracao] = useState<PcProps>({})
     const source = axios.CancelToken.source()
 
-    tipo === "minimo" && console.log(listaRequisitos);
+    // tipo === "minimo" && console.log(listaRequisitos);
 
     useEffect(() => {
         async function consultaConfig() {
@@ -57,7 +57,16 @@ export const CardPc = ({ tipo }: CardPcProps) => {
         <div className={styles.cardPc}>
             <h1>Configuração {tipo === "minimo" ? "Mínima" : "Recomendada"}</h1>
             <p>Para os jogos:</p>
-            {appList.appList.map((app: AppProps) => <p>{app.nome}</p>)}
+            <div className={styles.images}>
+                {/* <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/>
+                <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg?t=1650554420"} />
+                <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/>
+                <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/>
+                <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/> */}
+                {
+                    appList.appList.map((app: AppProps) => <img className={styles.imgIcon} title={app.nome} src={app.imagem} />)
+                }
+            </div>
             <p>Memória ram: {configuracao?.ram?.title || "Não calculado"}</p>
             <p>Placa de vídeo: {configuracao?.placa?.title || "Não calculado"}</p>
             <p>Armazenamento: {configuracao?.rom?.title || "Não calculado"}</p>
