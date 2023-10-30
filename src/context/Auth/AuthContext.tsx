@@ -9,7 +9,7 @@ import { UserProps } from '@/componentes/types'
 interface AuthContextProp {
     isAuthenticated: boolean,
     user: UserProps,
-    sigiIn: (data:UserProps) => Promise<void>
+    logIn: (data:UserProps) => Promise<void>
 }
 
 export const AuthContext = createContext<any>({} as AuthContextProp)
@@ -17,20 +17,18 @@ export const AuthContext = createContext<any>({} as AuthContextProp)
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter()
     const [user, setUser] = useState<UserProps | null>(null)
+    
+    useEffect(()=>{
+        const { UserInfo } = parseCookies()
 
-    //recuperar informações do usuario atualizadas
-
-    // useEffect(()=>{
-    //     const { 'PcBuildToken':token } = parseCookies()
-
-    //     if (token) {
-            
-    //     }
-    // },[])
+        if (UserInfo) {
+            setUser(JSON.parse(UserInfo))
+        }
+    },[])
 
     const isAuthenticated = !!user
 
-    async function sigiIn({ email, senha }: UserProps) {
+    async function logIn({ email, senha }: UserProps) {
         const response = await autenticaUsuario({ email, senha })
         
         const { token, 'usuario': user } = response.data
@@ -50,11 +48,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     function logOut() {
         destroyCookie(undefined, "UserInfo")
         destroyCookie(undefined, "PcBuildToken")
+        setUser(null)
         router.push("/")
     }
 
     return (
-        <AuthContext.Provider value={{user , isAuthenticated, sigiIn, logOut}}>
+        <AuthContext.Provider value={{user , isAuthenticated, logIn, logOut}}>
             {children}
         </AuthContext.Provider>
     )

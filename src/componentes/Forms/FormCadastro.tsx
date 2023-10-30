@@ -40,7 +40,7 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 const FormCadastro = () => {
-    const { sigiIn } = useAuthContext()
+    const { logIn } = useAuthContext()
 
     const [message, setMessage] = useState<string>("")
 
@@ -66,7 +66,7 @@ const FormCadastro = () => {
             )            
             if (response.status === 201) {
                 try {
-                    await sigiIn(
+                    await logIn(
                         {
                             email: data.email,
                             senha: data.senha

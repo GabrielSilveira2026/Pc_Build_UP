@@ -25,7 +25,7 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 const FormLogin = () => {
-    const { sigiIn } = useAuthContext()
+    const { logIn } = useAuthContext()
     const [message, setMessage] = useState<string>("")
 
     const {
@@ -47,7 +47,7 @@ const FormLogin = () => {
         }
 
         try {
-            await sigiIn(user)
+            await logIn(user)
         } 
         catch (error: any | AxiosError) {
             if (error?.response?.status === 401) {

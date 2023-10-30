@@ -10,16 +10,29 @@ interface UserInfoProps {
   } | undefined
 }
 
-export const UserInfo = ({ user }: UserInfoProps) => {
+export const UserInfo = () => {
+
+  const { logOut, user, isAuthenticated } = useAuthContext()
 
   return (
     <div className={styles.userInfo}>
-      {/* <FontAwesomeIcon
-        className={styles.userIcon}
-        icon={faUser}
-      /> */}
-      <p className={styles.userName}>Olá, {user?.nome}</p>
-      
+      {
+        isAuthenticated ?
+          <>
+            <FontAwesomeIcon
+              className={styles.userIcon}
+              icon={faUser}
+            />
+            <p className={styles.userName}>Olá, {user?.nome}</p>
+            <button
+              onClick={() => logOut()}
+              className={styles.btnLogOut}
+            >
+              Sair
+            </button>
+          </>
+          :
+          <Link className={styles.btnLogin} href="/login">Login</Link>}
     </div>
   )
 }
