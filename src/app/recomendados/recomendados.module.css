@@ -1,5 +1,6 @@
 .recomendadosContent {
     justify-content: center;
+    align-items: center;
     display: flex;
     gap: 50px;
     padding: 50px

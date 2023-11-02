@@ -1,4 +1,5 @@
 
+"use client"
 import { useAppListContext } from "@/context/AppList/AppList";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
@@ -10,10 +11,14 @@ interface CardProps {
 
 export const CardApp = ({ app }: CardProps) => {
     const appList = useAppListContext()
+    const appSelect = appList.appList.some((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
 
+    app.estado = appSelect ? "selected" : "unselected"
     const mudaEstado = () => {
         if (app.estado === "unselected") {
             appList.addToAppList(app)
+            console.log(appList.appList);
+            
         }
         else {
             appList.removeToAppList(app)

@@ -1,0 +1,28 @@
+.searchArea {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 5px;
+}
+
+.btnSearch {
+    font-size: 1.2rem;
+    background-color: transparent;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-radius: 6px;
+}
+
+.btnSearch:hover {
+    cursor: pointer;
+    background:
+        linear-gradient(to top,
+            rgb(255, 255, 255, 0.5),
+            transparent 80%)
+}
+
+.btnSearch:active {
+    transform: scale(0.98, 0.98);
+}
