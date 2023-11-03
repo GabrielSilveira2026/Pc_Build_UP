@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import styles from "./navBar.module.css"
-import { UserInfo } from "../UserInfo/UserInfo"
+import { UserInfo } from "./UserInfo/UserInfo"
 
 export const NavBar = () => {
     return (

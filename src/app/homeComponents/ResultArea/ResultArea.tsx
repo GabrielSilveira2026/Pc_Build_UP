@@ -1,6 +1,6 @@
 import styles from './resultArea.module.css'
-import { CardApp } from '../CardApp/CardApp'
-import { AppProps } from '../types'
+import { CardApp } from '../../../componentes/CardApp/CardApp'
+import { AppProps } from '../../../componentes/types'
 import { iniciaLista, pesquisaApps } from '@/app/api/httpservices'
 import { AxiosResponse } from 'axios'
 

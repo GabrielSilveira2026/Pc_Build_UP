@@ -1,6 +1,6 @@
 
 "use client"
-import { useAppListContext } from "@/context/AppList/AppList";
+import { useAppListContext } from "@/context/AppListContext/AppList";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
 

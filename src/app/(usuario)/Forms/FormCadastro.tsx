@@ -1,19 +1,19 @@
 "use client"
 
 import styles from "./form.module.css"
-import { Input } from "../Input/Input";
+import { Input } from "../../../componentes/Input/Input";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Router from "next/router";
-import { Button } from "../Button/Button";
+import { Button } from "../../../componentes/Button/Button";
 import { AxiosError, AxiosResponse } from "axios";
 import { cadastraUsuario } from "@/app/api/httpservices";
-import { UserProps } from "../types";
+import { UserProps } from "../../../componentes/types";
 import { useState } from "react";
-import { useAuthContext } from "@/context/Auth/AuthContext";
+import { useAuthContext } from "@/context/AuthContext/AuthContext";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
-import { useAuthContext } from "@/context/Auth/AuthContext"
+import { useAuthContext } from "@/context/AuthContext/AuthContext"
 import styles from "./userInfo.module.css"
 interface UserInfoProps {
   user: {

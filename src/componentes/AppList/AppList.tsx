@@ -1,5 +1,5 @@
 "use client"
-import { useAppListContext } from "@/context/AppList/AppList"
+import { useAppListContext } from "@/context/AppListContext/AppList"
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/navigation"

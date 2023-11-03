@@ -1,15 +1,15 @@
 "use client"
 import styles from "./form.module.css"
-import { Input } from "../Input/Input";
+import { Input } from "../../../componentes/Input/Input";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useForm } from "react-hook-form"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../Button/Button";
+import { Button } from "../../../componentes/Button/Button";
 import { AxiosError, AxiosResponse } from "axios";
 import { autenticaUsuario } from "@/app/api/httpservices";
-import { UserProps } from "../types";
-import { useAuthContext } from "@/context/Auth/AuthContext";
+import { UserProps } from "../../../componentes/types";
+import { useAuthContext } from "@/context/AuthContext/AuthContext";
 import { useState } from "react";
 
 const schema = z.object({

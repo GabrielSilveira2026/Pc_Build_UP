@@ -4,8 +4,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useState } from "react";
-import { Input } from "../Input/Input";
 import { useRouter } from "next/navigation";
+import { Input } from "@/componentes/Input/Input";
 
 export function Search({ search }: { search?: string }){
     const router = useRouter()
