@@ -11,3 +11,10 @@
     gap: 8px;
     padding-bottom: 100px;
 }
+
+@media (max-width: 600px) {
+
+    .resultList {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}

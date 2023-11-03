@@ -17,8 +17,6 @@ export const CardApp = ({ app }: CardProps) => {
     const mudaEstado = () => {
         if (app.estado === "unselected") {
             appList.addToAppList(app)
-            console.log(appList.appList);
-            
         }
         else {
             appList.removeToAppList(app)
