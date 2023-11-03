@@ -12,8 +12,8 @@ export function Search({ search }: { search?: string }){
     const [appSearched, setAppSearched] = useState<string>(search||"")
 
     function searchApp(app: string) {
-        app = app.replace(/[^0-9A-Za-z\s]/g, "").trim()
-        app.length && router.push(`/?search=${appSearched}`)
+        app = app.replace(/[^0-9A-Za-z\s]/g, '').trim()
+        app.length && router.push(`/?search=${app}`)
     }
 
     return (

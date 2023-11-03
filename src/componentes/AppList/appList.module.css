@@ -1,0 +1,144 @@
+.containerListList {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 1em;
+    right: .5rem;
+    z-index: 100;
+    max-width: 30%;
+    width: "fit-content"
+}
+
+.containerListHeader {
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, var(--blue-medium), var(--color-low-light));
+    border-radius: 8px 8px 0 8px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    padding: .5em 1em;
+    gap: 10px;
+}
+
+.containerListHeaderOpen {
+    border-bottom-left-radius: 0;
+}
+
+@keyframes toAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btnPcBuild {
+    cursor: pointer;
+    font-size: 1rem;
+    background: linear-gradient(45deg, var(--blue-medium), var(--color-low-light));
+    margin-bottom: 5px;
+    border-radius: 8px;
+    padding: 10px;
+    width: fit-content;
+    margin-left: auto;
+    border: none;
+    animation: toAppear .5s 
+}
+
+.clearList_ArrowIcon {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.btnClearAppList {
+    cursor: pointer;
+    padding: 5px;
+    border: none;
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.btnClearAppList:hover {
+    opacity: 0.8;
+}
+
+.containerListBody {
+    color: black;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: height .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85%;
+    min-height: auto
+
+}
+
+.containerListBody ul {
+    list-style: none;
+    margin: 0;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.itemAppList {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dfdfdf;
+    padding: .5rem;
+    gap: .5rem
+}
+
+.imgItemAppList{
+    cursor: pointer;
+    height:80%
+}
+
+.containerListBody p {
+    cursor: pointer;
+    width: 90%;
+}
+
+.btnDeselect {
+    cursor: pointer;
+    border: none;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+
+.btnDeselect:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+
+    .containerListList {
+        max-width: 85%;
+    }
+
+    .containerListBody {
+        font-size: 75%;
+    }
+
+    .btnClearAppList {
+        font-size: 10px
+    }
+
+}
+
+@media (max-width: 300px) {
+    .containerListBody {
+        font-size: 50%;
+    }
+}

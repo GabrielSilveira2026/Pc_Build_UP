@@ -64,7 +64,7 @@ export const CardPc = ({ tipo }: CardPcProps) => {
                 <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/>
                 <img className={styles.imgIcon} src={"https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg?t=1697438157"}/> */}
                 {
-                    appList.appList.map((app: AppProps) => <img className={styles.imgIcon} title={app.nome} src={app.imagem} />)
+                    appList.appList.map((app: AppProps) => <img key={app.id_jogo_steam} className={styles.imgIcon} title={app.nome} src={app.imagem} />)
                 }
             </div>
             <p>Memória ram: {configuracao?.ram?.title || "Não calculado"}</p>
