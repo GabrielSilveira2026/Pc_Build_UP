@@ -1,7 +1,6 @@
 .resultArea {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     gap: 15px;
     padding-bottom: 100px;
@@ -15,9 +14,9 @@
 }
 
 .btnsContainer {
-    display: grid;
+    display: flex;
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    width: 50%;
 }
 
 .buttons {
@@ -38,7 +37,10 @@
 }
 
 @media (max-width: 600px) {
-
+    .btnsContainer{
+        width: 100%;
+    }
+    
     .resultList {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
