@@ -10,27 +10,15 @@ interface ResultAreaProps {
     page: number
 }
 
-const ResultArea = async ({ appSearched, page }: ResultAreaProps) => {
-    let response: AxiosResponse
-    let resultList: AppProps[] = []
-    let hasMore = false
-    if (appSearched) {
-        try {
-            response = await pesquisaApps(appSearched, page)
-            resultList = response.data.items
-            hasMore = response.data.hasMore
-        } catch (error) {
-            resultList = []
-        }
-    }
-    else {
-        response = await iniciaLista()
-        resultList = response.data.items
-    }
+interface PreviousAndNextProps {
+    page: number, 
+    appSearched?: string, 
+    hasMore: boolean
+}
 
+const PreviousAndNext = ({page, appSearched, hasMore}: PreviousAndNextProps) => {
     return (
-        <div className={styles.resultArea}>
-            <div className={styles.btnsContainer}>
+        <div className={styles.btnsContainer}>
                 {
                     page > 0 &&
                     <Link 
@@ -60,6 +48,30 @@ const ResultArea = async ({ appSearched, page }: ResultAreaProps) => {
                     </Link>
                 }
             </div>
+    )
+}
+
+const ResultArea = async ({ appSearched, page }: ResultAreaProps) => {
+    let response: AxiosResponse
+    let resultList: AppProps[] = []
+    let hasMore = false
+    if (appSearched) {
+        try {
+            response = await pesquisaApps(appSearched, page)
+            resultList = response.data.items
+            hasMore = response.data.hasMore
+        } catch (error) {
+            resultList = []
+        }
+    }
+    else {
+        response = await iniciaLista()
+        resultList = response.data.items
+    }
+
+    return (
+        <div className={styles.resultArea}>
+            <PreviousAndNext page={page} appSearched={appSearched} hasMore={hasMore}/>
             {
                 resultList.length ?
                     <div className={styles.resultList}>
@@ -74,6 +86,7 @@ const ResultArea = async ({ appSearched, page }: ResultAreaProps) => {
                     :
                     <h1>Nenhum aplicativo encontrado :(</h1>
             }
+            <PreviousAndNext page={page} appSearched={appSearched} hasMore={hasMore}/>
         </div>
     )
 }
