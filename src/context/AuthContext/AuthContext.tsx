@@ -42,14 +42,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         })
 
         setUser(user)
-        router.push("/")
+        router.back()
     }
 
     function logOut() {
         destroyCookie(undefined, "UserInfo")
         destroyCookie(undefined, "PcBuildToken")
         setUser(null)
-        router.push("/")
+        router.back()
     }
 
     return (
