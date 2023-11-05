@@ -1,6 +1,7 @@
 
 "use client"
 import { useAppListContext } from "@/context/AppListContext/AppList";
+import { Suspense } from "react";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
 
@@ -28,8 +29,8 @@ export const CardApp = ({ app }: CardProps) => {
             <img className={styles.image} src={app.imagem} />
             <p>{app.nome}</p>
             <div
-            className={styles.boxButtons}>
-                <a 
+                className={styles.boxButtons}>
+                <a
                     href={`https://store.steampowered.com/app/${app.id_jogo_steam}`}
                     target="_blank"
                     className={styles.buttons}

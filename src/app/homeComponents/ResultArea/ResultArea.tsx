@@ -3,26 +3,63 @@ import { CardApp } from '../../../componentes/CardApp/CardApp'
 import { AppProps } from '../../../componentes/types'
 import { iniciaLista, pesquisaApps } from '@/app/api/httpservices'
 import { AxiosResponse } from 'axios'
+import Link from 'next/link'
 
-const ResultArea = async ({ appSearched }: { appSearched?: string }) => {
+interface ResultAreaProps {
+    appSearched?: string,
+    page: number
+}
+
+const ResultArea = async ({ appSearched, page }: ResultAreaProps) => {
     let response: AxiosResponse
     let resultList: AppProps[] = []
-
+    let hasMore = false
     if (appSearched) {
         try {
-            response = await pesquisaApps(appSearched, 0)
+            response = await pesquisaApps(appSearched, page)
             resultList = response.data.items
+            hasMore = response.data.hasMore
         } catch (error) {
             resultList = []
         }
     }
-    else{
+    else {
         response = await iniciaLista()
         resultList = response.data.items
     }
 
     return (
         <div className={styles.resultArea}>
+            <div className={styles.btnsContainer}>
+                {
+                    page > 0 &&
+                    <Link 
+                        className={styles.buttons}
+                        href={{
+                        pathname: "/",
+                        query: {
+                            search: appSearched,
+                            page: page > 0 ? page - 1 : 0
+                        }
+                    }}>
+                        Anterior
+                    </Link>
+                }
+                {
+                    hasMore &&
+                    <Link 
+                        className={styles.buttons}
+                        href={{
+                        pathname: "/",
+                        query: {
+                            search: appSearched,
+                            page: page + 1
+                        }
+                    }}>
+                        Próxima
+                    </Link>
+                }
+            </div>
             {
                 resultList.length ?
                     <div className={styles.resultList}>
@@ -34,8 +71,8 @@ const ResultArea = async ({ appSearched }: { appSearched?: string }) => {
                             })
                         }
                     </div>
-                :
-                <h1>Nenhum aplicativo encontrado :(</h1>
+                    :
+                    <h1>Nenhum aplicativo encontrado :(</h1>
             }
         </div>
     )

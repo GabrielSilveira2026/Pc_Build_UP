@@ -4,15 +4,17 @@ import { AppProps } from '@/componentes/types'
 import { Suspense } from 'react'
 import styles from './page.module.css'
 import Search from './homeComponents/Search/Search'
+import Link from 'next/link'
 
 interface HomeProps {
-  searchParams: { [key: string]: string | string[] | undefined },
-  app: AppProps
+  searchParams: {
+    [key: string]: string | string[] | undefined,
+  },
+  app: AppProps,
 }
 
-export default async function Home({ searchParams}: HomeProps) {
-  // const page = typeof searchParams === 'string' ? Number(searchParams.page) : 1
-  // const limit =  typeof searchParams.limit === 'string' ? Number(searchParams.limit) : 10
+export default async function Home({ searchParams }: HomeProps) {
+  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 0
   const search = typeof searchParams.search === 'string' ? searchParams.search : undefined
   
   return (
@@ -20,9 +22,9 @@ export default async function Home({ searchParams}: HomeProps) {
       <Search search={search} />
       <Suspense fallback={<>Carregando</>}>
         {/* @ts-expect-error Server Component */}
-        <ResultArea appSearched={search} />
+        <ResultArea appSearched={search} page={page}/>
       </Suspense>
-      <AppList/>
+      <AppList />
     </div>
   )
 }
