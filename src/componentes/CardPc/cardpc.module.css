@@ -1,0 +1,36 @@
+.cardPc {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-low-light);
+    width: 35%;
+    justify-content: center;
+    border-radius: 20px;
+    transition: all 0.5s;
+    padding: 20px
+}
+
+.images{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 60px;
+}
+
+.imgIcon{
+    min-width:80px;
+    max-width: 100px;
+}
+
+.imgIcon:hover{
+    transform: scale(1.05,1.05);
+    cursor: pointer;
+}
+
+/* .cardPc:hover {
+    transform: scale(1.05,1.05);
+    cursor: pointer;
+} */
+
+.cardPc .p{
+    font-size: 9px
+}

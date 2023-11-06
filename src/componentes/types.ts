@@ -8,3 +8,9 @@ export interface AppProps {
     requisitosminimos: string,
     requisitosrecomendados: string,
 }
+
+export interface UserProps {
+    nome?: string;
+    email: string;
+    senha: string;
+}

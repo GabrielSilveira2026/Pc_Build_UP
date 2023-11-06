@@ -1,16 +1,19 @@
 "use client"
 
 import styles from "./form.module.css"
-import { Input } from "../Input/Input";
+import { Input } from "../../../componentes/Input/Input";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form"
-import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios, { AxiosResponse } from "axios";
 import Router from "next/router";
-import { Button } from "../Button/Button";
+import { Button } from "../../../componentes/Button/Button";
+import { AxiosError, AxiosResponse } from "axios";
+import { cadastraUsuario } from "@/app/api/httpservices";
+import { UserProps } from "../../../componentes/types";
+import { useState } from "react";
+import { useAuthContext } from "@/context/AuthContext/AuthContext";
 
 const schema = z.object({
     nome: z.string().nonempty("Insira um nome de usuário").min(3, "Insira um nome com no mínimo 3 caracteres"),
@@ -37,7 +40,9 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>
 
 const FormCadastro = () => {
-    const router = useRouter();
+    const { logIn } = useAuthContext()
+
+    const [message, setMessage] = useState<string>("")
 
     const {
         register,
@@ -49,24 +54,32 @@ const FormCadastro = () => {
         resolver: zodResolver(schema)
     })
 
-    const handleForm = async(data: FormProps) => {
-        const user: object = {
-            nome: data.nome,
-            email: data.email,
-            senha: data.senha
+    const handleForm = async (data: FormProps) => {
+
+        try {
+            const response: AxiosResponse = await cadastraUsuario(
+                {
+                    nome: data.nome,
+                    email: data.email,
+                    senha: data.senha
+                }
+            )            
+            if (response.status === 201) {
+                try {
+                    await logIn(
+                        {
+                            email: data.email,
+                            senha: data.senha
+                        }
+                    )
+                }
+                catch (error: any | AxiosError) {
+                    setMessage(error?.response?.data.erro)
+                }
+            }
         }
-        
-        const resposta: Response = await fetch("http://164.152.38.61/usuario/cadastro", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json;charset=UTF-8",
-            },
-            body: JSON.stringify({ usuario: user }),
-          }
-        )
-        
-        if (resposta.status === 201) {
-            console.log("cadastrado");
+        catch (error: any | AxiosError) {
+            setMessage(error?.response?.data.erro)
         }
     }
 
@@ -104,7 +117,14 @@ const FormCadastro = () => {
                 textoAjuda={errors.confirmaSenha?.message}
             />
 
-            <Button type="submit" text="Cadastrar"/>
+            {
+                message
+                &&
+                <p className={styles.message}>{message}</p>
+            }
+
+
+            <Button type="submit" text="Cadastrar" />
 
         </form>
     )

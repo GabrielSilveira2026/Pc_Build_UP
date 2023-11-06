@@ -1,0 +1,21 @@
+.navBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    font-size: 25px;
+    background: linear-gradient(90deg ,var(--blue-medium), var(--color-low-light));
+}
+
+.linkHome{
+    color: white;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 8px
+}
+
+.linkLogin{
+    color: white;    
+    text-decoration: none;
+}

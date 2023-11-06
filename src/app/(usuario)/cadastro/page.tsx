@@ -1,4 +1,4 @@
-import FormCadastro from '@/componentes/Forms/FormCadastro'
+import FormCadastro from '@/app/(usuario)/Forms/FormCadastro'
 import Link from 'next/link'
 import styles from '../cadastroLogin.module.css'
 

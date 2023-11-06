@@ -1,6 +1,7 @@
 
-import { useAppListContext } from "@/context/AppList";
-import { Button } from "../Button/Button";
+"use client"
+import { useAppListContext } from "@/context/AppListContext/AppList";
+import { Suspense } from "react";
 import { AppProps } from "../types";
 import styles from "./cardApp.module.css"
 
@@ -11,7 +12,9 @@ interface CardProps {
 
 export const CardApp = ({ app }: CardProps) => {
     const appList = useAppListContext()
+    const appSelect = appList.appList.some((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
 
+    app.estado = appSelect ? "selected" : "unselected"
     const mudaEstado = () => {
         if (app.estado === "unselected") {
             appList.addToAppList(app)
@@ -26,10 +29,10 @@ export const CardApp = ({ app }: CardProps) => {
             <img className={styles.image} src={app.imagem} />
             <p>{app.nome}</p>
             <div
-            className={styles.boxButtons}>
-                <a 
+                className={styles.boxButtons}>
+                <a
                     href={`https://store.steampowered.com/app/${app.id_jogo_steam}`}
-                    target="blank"
+                    target="_blank"
                     className={styles.buttons}
                 >
                     Steam

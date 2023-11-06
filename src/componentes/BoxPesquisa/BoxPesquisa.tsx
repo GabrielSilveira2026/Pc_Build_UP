@@ -8,7 +8,10 @@ import { Input } from '../Input/Input'
 import styles from './boxPesquisa.module.css'
 import { CardApp } from '../CardApp/CardApp';
 import { AppProps } from '../types';
-import { useAppListContext } from '@/context/AppList';
+import { useAppListContext } from '@/context/AppListContext/AppList';
+import { pesquisaApps } from '@/app/api/httpservices';
+import { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 
 interface Response {
     items: AppProps[],
@@ -24,32 +27,25 @@ interface Response {
 
 export const BoxPesquisa = () => {
     const appList = useAppListContext()
+    const router = useRouter()
     const [appSearched, setAppSearched] = useState<string>("")
     const [listAppResults, setListAppResults] = useState<AppProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [viewAppList, setViewAppList] = useState<boolean>(true)
     const lengthAppList: number = appList.appList.length
 
-    //Nota: Mover essa função para um arquivo "httpservices"
-    async function pesquisaApps(app: string, offset: number) {
-        const response = await fetch(`https://g4673849dbf8477-kh8pftimtcmp3b10.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/pesquisa/resultados/${app}?limit=10000&offset=${offset}`);
-        if (!response.ok) {
-            throw new Error('Erro ao buscar apps');
-        }
-        return response.json();
-    }
-
     async function pesquisa(app: string) {
         setLoading(true)
         let offset: number = 0
         let response: Response
         let listaAuxiliar: AppProps[] = []
+
         app = app.replace(/[^0-9A-Za-z\s]/g, "").trim()
         if (app != "") {
             try {
                 do {
-                    response = await pesquisaApps(app, offset)
-    
+                    let responseAxios: AxiosResponse = await pesquisaApps(app, offset)
+                    response = responseAxios.data
                     for (var i = 0; i < response.count; i++) {
                         let app: AppProps = response?.items[i]
                         let jogoEstaSelecionado = appList.appList.find((appList: AppProps) => appList.id_jogo_steam === app.id_jogo_steam)
@@ -68,6 +64,8 @@ export const BoxPesquisa = () => {
                 }
             } 
             catch (error) {    
+                console.log(error);
+                
                 alert("Desculpe, ocorreu um erro no servidor")
             }
         }
@@ -107,7 +105,7 @@ export const BoxPesquisa = () => {
             >
                 {   
                     lengthAppList > 0 &&
-                    <button className={styles.btnPcBuild}>
+                    <button onClick={() =>{router.push("recomendados")}}  className={styles.btnPcBuild}>
                         Montar Pc
                     </button>
                 }
@@ -138,12 +136,12 @@ export const BoxPesquisa = () => {
                 <div className={`${styles.containerListBody}`}
                     style={{ height: viewAppList && lengthAppList > 0 ? lengthAppList * 60 : 0 }}
                 >
-                    <ul className={`${styles.appListList} `}>
+                    <div className={`${styles.appListList} `}>
                         {appList.appList.map((app: AppProps) => {
                             return (
-                                <div className={styles.itemAppList}>
+                                <div key={app.id} className={styles.itemAppList}>
                                     <img className={styles.imgItemAppList} src={app.imagem} onClick={()=>{setListAppResults([app])}}/>
-                                    <li key={app.id} onClick={()=>{setListAppResults([app])}}>{app.nome}</li>
+                                    <p onClick={()=>{setListAppResults([app])}}>{app.nome}</p>
                                     <button
                                         className={styles.btnDeselect} onClick={() => {
                                             app.estado = "unselected"
@@ -156,7 +154,7 @@ export const BoxPesquisa = () => {
                             )
                         })
                         }
-                    </ul>
+                    </div>
                 </div>
 
             </div>

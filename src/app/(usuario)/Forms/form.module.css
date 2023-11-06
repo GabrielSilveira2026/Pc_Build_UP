@@ -8,3 +8,10 @@
 .form button{
     margin: 15px 0 15px 0;
 }
+
+.message {
+    color: rgb(255, 50, 50);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+}

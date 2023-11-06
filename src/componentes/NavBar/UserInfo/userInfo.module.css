@@ -1,0 +1,33 @@
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem
+}
+
+.userName {
+    font-size: 1rem;
+}
+
+.userIcon {
+    font-size: 1.5rem;
+}
+
+.btnLogin {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.btnLogOut {
+    border:none;
+    background-color: transparent;
+    color: red;
+    font-size: 1rem;
+    padding: 0px;
+}
+
+.userIcon:hover, 
+.btnLogOut:hover {
+    cursor: pointer;
+}
