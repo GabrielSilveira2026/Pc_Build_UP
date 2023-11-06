@@ -14,9 +14,10 @@
 }
 
 .btnsContainer {
-    display: flex;
+    display: grid;
     gap: 0.5rem;
-    width: 50%;
+    width: 40%;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .buttons {
@@ -38,10 +39,15 @@
 
 @media (max-width: 600px) {
     .btnsContainer{
-        width: 100%;
+        width: 50%;
     }
-    
     .resultList {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 400px) {
+    .btnsContainer{
+        width: 100%;
     }
 }
